@@ -1,0 +1,289 @@
+Log całości:
+
+maciek@host8 txt % git log
+commit 753ad37caf552f09b0014f4009ffa10c835391d3 (HEAD -> master)
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 14:02:13 2020 +0200
+
+    usunąłem powtarzające się pliki z refrenen
+
+commit 913444f5b94bafb0979f7d3f529beee7ed5b6206
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 14:00:23 2020 +0200
+
+    przywróciłem linijkę refrenu
+
+commit 9afc087055f5e1b47e893d792f4be44ab1d94867
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:46:05 2020 +0200
+
+    usunąłem jedną linijkę z refrenu
+
+commit 1bf0afacce233a1db3a88ba1aab6e87cad7bd401
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:42:44 2020 +0200
+
+    zamieniam piosenka.txt
+
+commit 83cf80223460e5fcead957434fc3873234aee680
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:16:39 2020 +0200
+
+    dodałem refren3.txt
+
+commit 6599f3b95b7f58a343247ece15195f600d4fd3f5
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:16:19 2020 +0200
+
+    dodałem zwrotka3.txt
+
+commit 645d69943eeed0aa1057842401f12b400fb6a15c
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:55:58 2020 +0200
+
+    dodałem refren2.txt
+
+commit f404d086e926463f194e6a76d493322d760dda77
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:54:16 2020 +0200
+
+    dodałem zwrotka2.txt
+
+commit cf217387fb6c82807e57ac7c2a77c52d41061370
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:53:43 2020 +0200
+
+    refren1.txt
+
+commit 77f82886fbcc84e28a751f6e37a822e076bb37de
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:53:10 2020 +0200
+
+    dodałem zwrotka1.txt
+
+commit f173f0b0c8f159a66b84cf483614dc852dddbfc3
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:42:33 2020 +0200
+
+    dodałem plik piosenka.txt
+
+
+log piosenka.txt
+
+maciek@host8 txt % git log -p piosenka.txt
+commit 1bf0afacce233a1db3a88ba1aab6e87cad7bd401
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:42:44 2020 +0200
+
+    zamieniam piosenka.txt
+
+diff --git a/piosenka.txt b/piosenka.txt
+index a986ab7..1d0b07a 100644
+--- a/piosenka.txt
++++ b/piosenka.txt
+@@ -1,22 +1,8 @@
+-Golden brown texture like sun
+-Lays me down with my mind she runs
+-Throughout the night
+-No need to fight
+-Never a frown with golden brown
++Zwrotka1
++Refren1
+
+-Every time just like the last
+-On her ship tied to the mast
+-To distant lands
+-Takes both my hands
+-Never a frown with golden brown
++Zwrotka2
++Refren2
+
+-Golden brown finer temptress
+-Through the ages she's heading West
+-From far away
+-Stays for a day
+-Never a frown with golden brown
+-
+-Never a frown
+-With golden brown
+-Never a frown
+-With golden brown
+\ No newline at end of file
++Zwrotka3
++Refren3
+\ No newline at end of file
+
+commit f173f0b0c8f159a66b84cf483614dc852dddbfc3
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:42:33 2020 +0200
+
+    dodałem plik piosenka.txt
+
+diff --git a/piosenka.txt b/piosenka.txt
+new file mode 100644
+index 0000000..a986ab7
+--- /dev/null
++++ b/piosenka.txt
+@@ -0,0 +1,22 @@
++Golden brown texture like sun
++Lays me down with my mind she runs
++Throughout the night
++No need to fight
++Never a frown with golden brown
++
++Every time just like the last
++On her ship tied to the mast
++To distant lands
++Takes both my hands
++Never a frown with golden brown
++
++Golden brown finer temptress
++Through the ages she's heading West
++From far away
++Stays for a day
++Never a frown with golden brown
++
++Never a frown
++With golden brown
++Never a frown
++With golden brown
+\ No newline at end of file
+
+
+log zwrotka 1.txt
+
+maciek@host8 txt % git log -p zwrotka1.txt
+commit 77f82886fbcc84e28a751f6e37a822e076bb37de
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:53:10 2020 +0200
+
+    dodałem zwrotka1.txt
+
+diff --git a/zwrotka1.txt b/zwrotka1.txt
+new file mode 100644
+index 0000000..157f1bc
+--- /dev/null
++++ b/zwrotka1.txt
+@@ -0,0 +1,4 @@
++Golden brown texture like sun
++Lays me down with my mind she runs
++Throughout the night
++No need to fight
+\ No newline at end of file
+
+
+log refren1.txt
+
+maciek@host8 txt % git log -p refren1.txt
+commit cf217387fb6c82807e57ac7c2a77c52d41061370
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:53:43 2020 +0200
+
+    refren1.txt
+
+diff --git a/refren1.txt b/refren1.txt
+new file mode 100644
+index 0000000..3287950
+--- /dev/null
++++ b/refren1.txt
+@@ -0,0 +1 @@
++Never a frown with golden brown
+
+log zwrotka2.txt
+
+maciek@host8 txt % git log -p zwrotka2.txt
+commit f404d086e926463f194e6a76d493322d760dda77
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 12:54:16 2020 +0200
+
+    dodałem zwrotka2.txt
+
+diff --git a/zwrotka2.txt b/zwrotka2.txt
+new file mode 100644
+index 0000000..216090b
+--- /dev/null
++++ b/zwrotka2.txt
+@@ -0,0 +1,4 @@
++Every time just like the last
++On her ship tied to the mast
++To distant lands
++Takes both my hands
+\ No newline at end of file
+
+log zwrotka3.txt
+
+maciek@host8 txt % git log -p zwrotka3.txt
+commit 6599f3b95b7f58a343247ece15195f600d4fd3f5
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:16:19 2020 +0200
+
+    dodałem zwrotka3.txt
+
+diff --git a/zwrotka3.txt b/zwrotka3.txt
+new file mode 100644
+index 0000000..3203bc8
+--- /dev/null
++++ b/zwrotka3.txt
+@@ -0,0 +1,4 @@
++Golden brown finer temptress
++Through the ages she's heading West
++From far away
++Stays for a day
+\ No newline at end of file
+
+log refren3.txt
+
+maciek@host8 txt % git log -p refren3.txt
+commit 913444f5b94bafb0979f7d3f529beee7ed5b6206
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 14:00:23 2020 +0200
+
+    przywróciłem linijkę refrenu
+
+diff --git a/refren3.txt b/refren3.txt
+index 52cc412..919138a 100644
+--- a/refren3.txt
++++ b/refren3.txt
+@@ -3,3 +3,4 @@ Never a frown with golden brown
+ Never a frown
+ With golden brown
+ Never a frown
++With golden brown
+\ No newline at end of file
+
+commit 9afc087055f5e1b47e893d792f4be44ab1d94867
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:46:05 2020 +0200
+
+    usunąłem jedną linijkę z refrenu
+
+diff --git a/refren3.txt b/refren3.txt
+index 919138a..52cc412 100644
+--- a/refren3.txt
++++ b/refren3.txt
+@@ -3,4 +3,3 @@ Never a frown with golden brown
+ Never a frown
+ With golden brown
+ Never a frown
+-With golden brown
+\ No newline at end of file
+
+commit 83cf80223460e5fcead957434fc3873234aee680
+Author: Maciej Topolewski <maciej@top-project.com.pl>
+Date:   Fri Oct 16 13:16:39 2020 +0200
+
+    dodałem refren3.txt
+
+diff --git a/refren3.txt b/refren3.txt
+new file mode 100644
+index 0000000..919138a
+--- /dev/null
++++ b/refren3.txt
+@@ -0,0 +1,6 @@
++Never a frown with golden brown
++
++Never a frown
++With golden brown
++Never a frown
++With golden brown
+\ No newline at end of file
