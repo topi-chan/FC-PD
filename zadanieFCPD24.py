@@ -8,9 +8,7 @@ dodanie = 0
 
 print("Podaj wagę paczki w kg (aby zakończyć wpisz 0): ")
 
-fhand = True
-
-while fhand:
+while True:
     fhand = input()
     try:
         fhand_flt = float(fhand)
@@ -30,14 +28,13 @@ while fhand:
     elif fhand_flt < 1:
         print("Błąd - podaj wagę od 1 do 10 kg")
         quit()
-    else:
-        paka_maks = paka_maks + fhand_flt
-        if paka_maks > 20:
-            paka_maks = paka_maks - fhand_flt
-            paka += 1
-            puste = 20 - paka_maks
-            if puste_maks <= puste:
-                puste_maks = puste
-            puste_suma = puste_suma + puste
-            wyslane = wyslane + paka_maks
-            paka_maks = fhand_flt
+    paka_maks = paka_maks + fhand_flt
+    if paka_maks > 20:
+        paka_maks = paka_maks - fhand_flt
+        paka += 1
+        puste = 20 - paka_maks
+        if puste_maks <= puste:
+            puste_maks = puste
+        puste_suma = puste_suma + puste
+        wyslane = wyslane + paka_maks
+        paka_maks = fhand_flt
