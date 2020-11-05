@@ -5,7 +5,10 @@ lista = []
 produkty = []
 komentarze = []
 counts = {}
-przglad = []
+przeglad = []
+sld = []
+zkp = []
+spd = []
 
 x = str(sys.argv[1])
 
@@ -292,40 +295,49 @@ elif x == "przegląd":
         fhand = input()
         fhand
         if fhand == "stop":
-            for l in lista[y:z+1]:
-                print(l)
+            for s in sld[y:z+1]:
+                przeglad.append(s)
+            for z in zkp[y:z+1]:
+                przeglad.append(z)
+            for s in spd[y:z+1]:
+                przeglad.append(s)
+            for p in przeglad[y:z+1]:
+                print(p)
             print("stop")
             break
         lista.append(fhand)
         if fhand == "saldo":
+            sld.append("saldo")
             zmiana = int(input())
             zmiana
-            lista.append(zmiana)
+            sld.append(zmiana)
             komentarz = str(input())
             komentarz
-            lista.append(komentarz)
+            sld.append(komentarz)
             continue
         if fhand == "zakup":
+            zkp.append("zakup")
             nazwa = str(input())
             nazwa
-            lista.append(nazwa)
+            zkp.append(nazwa)
             cena = int(input())
             cena
-            lista.append(cena)
+            zkp.append(cena)
             sztuk = int(input())
             sztuk
-            lista.append(sztuk)
+            zkp.append(sztuk)
             continue
         if fhand == "sprzedaż":
+            spd.append("sprzedaż")
             nazwa = str(input())
             nazwa
-            lista.append(nazwa)
+            spd.append(nazwa)
             cena = int(input())
             cena
-            lista.append(cena)
+            spd.append(cena)
             sztuk = int(input())
             sztuk
-            lista.append(sztuk)
+            spd.append(sztuk)
             continue
         else:
             print("Błąd")
