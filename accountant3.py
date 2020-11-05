@@ -5,6 +5,7 @@ lista = []
 produkty = []
 komentarze = []
 counts = {}
+przglad = []
 
 x = str(sys.argv[1])
 
@@ -281,7 +282,55 @@ elif x == "magazyn":
             continue
 
 elif x == "przegląd":
-    pass
+    try:
+        y = int(sys.argv[2])
+        z = int(sys.argv[3])
+    except:
+        print("Błąd - dla polecenia 'przegląd' podaj wartości indeksu początkowego i końcowego")
+        quit()
+    while True:
+        fhand = input()
+        fhand
+        if fhand == "stop":
+            for l in lista[y:z+1]:
+                print(l)
+            print("stop")
+            break
+        lista.append(fhand)
+        if fhand == "saldo":
+            zmiana = int(input())
+            zmiana
+            lista.append(zmiana)
+            komentarz = str(input())
+            komentarz
+            lista.append(komentarz)
+            continue
+        if fhand == "zakup":
+            nazwa = str(input())
+            nazwa
+            lista.append(nazwa)
+            cena = int(input())
+            cena
+            lista.append(cena)
+            sztuk = int(input())
+            sztuk
+            lista.append(sztuk)
+            continue
+        if fhand == "sprzedaż":
+            nazwa = str(input())
+            nazwa
+            lista.append(nazwa)
+            cena = int(input())
+            cena
+            lista.append(cena)
+            sztuk = int(input())
+            sztuk
+            lista.append(sztuk)
+            continue
+        else:
+            print("Błąd")
+            continue
+
 
 else:
     print("Błąd - dozwolone akcje to: saldo, sprzedaż, zakup, konto, magazyn, przegląd")
