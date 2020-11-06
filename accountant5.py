@@ -11,6 +11,7 @@ counts = {}
 przeglad = []
 #w kazdym trybie programu mozna dodatkowo sprawdzic stan magazynu przez dodanie:
 # "print("Stan magazynu: ", magazyn)" po "if fhand == "stop":"
+#dla 'salda' można w ten sposób sprawdzić komentarze
 
 # po wprowadzeniu danych z < in.txt coś się dzieje z kodowaniem znaków i wyskakują tracebacki
 
@@ -425,7 +426,6 @@ elif x == "przegląd":
                 print(p)
             print("stop")
             break
-        lista.append(fhand)
         if fhand == "saldo":
             zmiana = int(input())
             zmiana
