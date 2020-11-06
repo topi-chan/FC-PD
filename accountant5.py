@@ -136,18 +136,18 @@ elif x == "sprzedaż":
             nazwa = str(input())
             nazwa
             if nazwa in magazyn:
-                lista.append(nazwa)
                 cena = int(input())
                 cena
                 if cena < 0:
                     print("Błąd - cena nie może być mniejsza od zera")
                     continue
-                lista.append(cena)
                 sztuk = int(input())
                 sztuk
                 if sztuk < 0:
                     print("Błąd - liczba sztuk nie może być mniejsza od zera")
                     continue
+                lista.append(nazwa)
+                lista.append(cena)
                 lista.append(sztuk)
                 magazyn[nazwa] = magazyn.get(nazwa, 0) -sztuk
                 saldo += (cena * sztuk)
@@ -217,18 +217,18 @@ elif x == "zakup":
             nazwa = str(input())
             nazwa
             if nazwa in magazyn:
-                lista.append(nazwa)
                 cena = int(input())
                 cena
                 if cena < 0:
                     print("Błąd - cena nie może być mniejsza od zera")
                     continue
-                lista.append(cena)
                 sztuk = int(input())
                 sztuk
                 if sztuk < 0:
                     print("Błąd - liczba sztuk nie może być mniejsza od zera")
                     continue
+                lista.append(nazwa)
+                lista.append(cena)
                 lista.append(sztuk)
                 magazyn[nazwa] = magazyn.get(nazwa, 0) -sztuk
                 saldo += (cena * sztuk)
@@ -376,18 +376,18 @@ elif x == "magazyn":
             nazwa = str(input())
             nazwa
             if nazwa in magazyn:
-                lista.append(nazwa)
                 cena = int(input())
                 cena
                 if cena < 0:
                     print("Błąd - cena nie może być mniejsza od zera")
                     continue
-                lista.append(cena)
                 sztuk = int(input())
                 sztuk
                 if sztuk < 0:
                     print("Błąd - liczba sztuk nie może być mniejsza od zera")
                     continue
+                lista.append(nazwa)
+                lista.append(cena)
                 lista.append(sztuk)
                 magazyn[nazwa] = magazyn.get(nazwa, 0) -sztuk
                 while True:
