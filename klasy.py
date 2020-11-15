@@ -1,16 +1,19 @@
 import sys
 arg = sys.argv[1]
 
-uczen_klasa = None
+uczen_klasa = {}
 nauczyciel_przedmiot = None
 klasy_nauczyciela = []
 klasy_wychowawcy = []
 
-x = input("Wprowadź polecenie")
-
-while x != "koniec":
+while True:
+    x = input("Wprowadź polecenie: ")
+    if x == "koniec":
+        break
     if x == "uczeń":
-        uczen_klasa = input("Klasa ucznia?")
+        uczen = input("Nazwisko ucznia?")
+        klasa = input("Klasa ucznia?")
+        uczen_klasa.get(uczen, klasa)
         continue
     if x == "nauczyciel":
         nauczyciel_przedmiot = input("Prowadzony przedmiot?")
@@ -25,36 +28,36 @@ while x != "koniec":
             klasy_wychowawcy.append(klasy)
         else:
             continue
-else:
-    break
-
-if arg = uczen_klasa:
-    print
-
-
-    fhand = input()
-
-    if fhand == "C":
-        print('haha')
-    fhand
-    if fhand == "stop":
-        quit()
-
-    try:
-        sys.argv[1]
-    except:
-        pass
-
-except:
-    break
 
 
 
-def wychowawca(klasa):
-    return
+if arg == "uczeń":
+    print(uczen_klasa)
 
-def nauczyciel(klasa, przedmiot):
-    return
-
-def uczen(klasa):
-    return
+#
+#     fhand = input()
+#
+#     if fhand == "C":
+#         print('haha')
+#     fhand
+#     if fhand == "stop":
+#         quit()
+#
+#     try:
+#         sys.argv[1]
+#     except:
+#         pass
+#
+# except:
+#     break
+#
+#
+#
+# def wychowawca(klasa):
+#     return
+#
+# def nauczyciel(klasa, przedmiot):
+#     return
+#
+# def uczen(klasa):
+#     return
