@@ -2,9 +2,16 @@ import sys
 arg = sys.argv[1]
 
 uczen_klasa = {}
-nauczyciel_przedmiot = None
-klasy_nauczyciela = []
-klasy_wychowawcy = []
+
+class Nauczyciel:
+    def __init__(self, Nazwisko, Przedmiot, Klasa):
+        self.Nazwisko = nauczyciel
+        self.Przedmiot = nauczyciel_przedmiot
+        self.Klasa = nauczyciel_klasa
+class Wychowawca:
+    def __init__(self, Nazwisko, Klasy):
+        self.Nazwisko = wychowawca
+        self.Klasy = wychowawca_klasy
 
 while True:
     x = input("Wprowadź polecenie: ")
@@ -13,26 +20,26 @@ while True:
     if x == "uczeń":
         uczen = input("Nazwisko ucznia?")
         klasa = input("Klasa ucznia?")
-        uczen_klasa.get(uczen, klasa)
+        uczen_klasa[uczen] = klasa
         continue
     if x == "nauczyciel":
+        nauczyciel = input("Nazwisko nauczyciela?")
         nauczyciel_przedmiot = input("Prowadzony przedmiot?")
-        klasa = input("Klasa?")
-        if klasa != "\n":
-            klasy_nauczyciela.append(klasa)
-        else:
+        nauczyciel_klasy = input("Klasa?")
+        if nauczyciel_klasy == "\n":
             continue
     if x == "wychowawca":
-        klasy = input("Klasa?")
-        if klasy != "\n":
-            klasy_wychowawcy.append(klasy)
-        else:
+        wychowawca = input("Nazwisko wychowawcy?")
+        wychowawca_klasy = input("Klasa?")
+        if wychowawca_klasy == "\n":
             continue
 
 
 
 if arg == "uczeń":
     print(uczen_klasa)
+if arg == "nauczyciel":
+
 
 #
 #     fhand = input()
