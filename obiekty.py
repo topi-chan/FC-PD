@@ -1,14 +1,8 @@
-# Jeśli typ użytkownika to uczeń pobierz jedną linię - będzie to nazwa klasy (np
-# 3C), przejdź do kroku 1 Jeśli typ użytkownika to nauczyciel pobierz 1 linię -
-# nazwę przedmiotu prowadzonego a następnie w nowych liniach nazwy klas aż do
-# otrzymania pustej linii. Przejdź do korku 1 Jeśli typ użytkownika to
-# wychowawca pobieraj w nowych liniach nazwy klas które prowadzi wychowawca aż
-# do pustej linii, przejdź do kroku 1
 import sys
 arg = sys.argv[1]
 
 class Uczen:
-    def __init__(self, fullname, classroom):
+    def __init__(self):
         self.fullname == ""
         self.classroom == ""
 
@@ -21,7 +15,7 @@ class Uczen:
             self.classroom.append(classrooms)
 
 class Nauczyciel:
-    def __init__(self, fullname, classroom, subject):
+    def __init__(self):
         self.fullname == ""
         self.classroom == []
         self.subject == []
@@ -53,9 +47,11 @@ class Wychowawca:
                 break
             self.classroom.append(classrooms)
 
-u = Uczen(fullname, classroom)
+# TODO:
+u = Uczen(self.fullname, self.classroom)
 n = Nauczyciel(fullname, classroom, subject)
 w = Wychowawca(fullname, classroom)
+#tej części TODO nie wiem jak zrobić - krzaczy się. Jak się odwołać do obiektu?
 
 while True:
     fhand = input("Podaj typ użytkownika")
@@ -68,35 +64,25 @@ while True:
     else:
         break
 
-
-if arg == "uczen" or "Uczeń":
-    print(u.classroom)
-if arg == "nauczyciel" or "Nauczyciel":
+#jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego" listę?
+#jak się do niej odwołać?
+#czyli np. dla ucznia: jeden z uczniów to X, i jest w klasie Y, a jednocześnie
+#nauczyciel Z uczy w klasie Y = muszę sprawdzić w liście tego nauczyciela
+#jakie prowadzi przedmioty, żeby wypisać przedmioty na które uczęszcza uczeń
+#przykładowa logika w 3 dalszych linijkach ale czy dobra i jak to zapisać?
+if arg == u.fullname:
+    if u.classroom in n.classroom:
+        print(n.subject)
+if arg == w.fullname:
+    ...
+if arg == n.fullname:
     print(Nauczyciel.Nazwisko())
-if arg == "wychowawca" or "Wychowawca":
-    print(Nauczyciel.Nazwisko())
-
-# while True:
-#     x = input("Wprowadź polecenie: ")
-#     if x == "koniec":
-#         break
-#
-#     if x == "uczen":
-#         uczen = input("Nazwisko ucznia?")
-#         klasa = input("Klasa ucznia?")
-#         uczen_klasa[uczen] = klasa
-#         continue
-#
-#     if x == "nauczyciel":
-#         nauczyciel = input("Nazwisko nauczyciela?")
-#         nauczyciel_przedmiot = input("Prowadzony przedmiot?")
-#         nauczyciel_klasy = input("Klasa?")
-#         if nauczyciel_klasy == "\n":
-#             continue
-#
-#     if x == "wychowawca":
-#         wychowawca = input("Nazwisko wychowawcy?")
-#         wychowawca_klasy = input("Klasa?")
-#         if wychowawca_klasy == "\n":
-#             continue
-#
+# TODO:
+#chodzi o argv = nazwa klasy
+elif arg in u.classroom:
+    .......
+    .......
+    .......
+#ta część dość trudna, bo trzeba się do różnych klas odwoływać jednocześnie?
+else:
+    quit()
