@@ -1,4 +1,4 @@
-import sys
+import sys, os
 arg = sys.argv[1]
 
 uczen_klasa = {}
@@ -17,7 +17,7 @@ while True:
     x = input("Wprowadź polecenie: ")
     if x == "koniec":
         break
-    if x == "uczeń":
+    if x == "uczen":
         uczen = input("Nazwisko ucznia?")
         klasa = input("Klasa ucznia?")
         uczen_klasa[uczen] = klasa
@@ -28,6 +28,7 @@ while True:
         nauczyciel_klasy = input("Klasa?")
         if nauczyciel_klasy == "\n":
             continue
+
     if x == "wychowawca":
         wychowawca = input("Nazwisko wychowawcy?")
         wychowawca_klasy = input("Klasa?")
@@ -36,10 +37,10 @@ while True:
 
 
 
-if arg == "uczeń":
+if arg == "uczen":
     print(uczen_klasa)
 if arg == "nauczyciel":
-
+    print(Nauczyciel.Nazwisko())
 
 #
 #     fhand = input()
