@@ -1,24 +1,23 @@
 import sys
 arg = sys.argv[1]
 
-class Uczen:
+
+class Student:
     def __init__(self):
-        self.fullname == ""
-        self.classroom == ""
+        self.fullname = ""
+        self.classroom = ""
 
     def data_input(self):
         self.fullname = input()
-        while True:
-            classrooms = input()
-            if not classrooms:
-                break
-            self.classroom.append(classrooms)
+        self.classroom = input()
+        break
 
-class Nauczyciel:
+
+class Teacher:
     def __init__(self):
-        self.fullname == ""
-        self.classroom == []
-        self.subject == []
+        self.fullname = ""
+        self.classroom = []
+        self.subject = []
 
     def data_input(self):
         self.fullname = input()
@@ -34,10 +33,11 @@ class Nauczyciel:
                 break
             self.subject.append(subjects)
 
-class Wychowawca:
+
+class Mentor:
     def __init__(self):
-        self.fullname == ""
-        self.classroom == []
+        self.fullname = ""
+        self.classroom = []
 
     def data_input(self):
         self.fullname = input()
@@ -47,22 +47,47 @@ class Wychowawca:
                 break
             self.classroom.append(classrooms)
 
-# TODO:
-u = Uczen(self.fullname, self.classroom)
-n = Nauczyciel(fullname, classroom, subject)
-w = Wychowawca(fullname, classroom)
-#tej części TODO nie wiem jak zrobić - krzaczy się. Jak się odwołać do obiektu?
+    def data_output(self):
+        self.students.append()
+        print("")
+    # pobrac osoby i klasy - slowniki
+    # if d s f :
+    #     dsdss"
+    # else dsokdso:
+
+
+class Classroom:
+    def __init__(self):
+        self.classroom = ""
+        self.teachers = []
+        self.students = []
+        self.mentor = ""
+
+    def appends(self):
+        self.classroom
+
+
+klasy = {}
+osoby = {}
 
 while True:
-    fhand = input("Podaj typ użytkownika")
-    if fhand == "uczeń" or "Uczeń":
-        u.data_input()
-    if fhand == "nauczyciel" or "Nauczyciel":
-        n.data_input()
-    if fhand == "wychowawca" or "Wychowawca":
-        w.data_input()
+    fhand = input("Podaj typ użytkownika: ")
+    if fhand == "uczen":
+        person = Uczen()
+        classroom = Classroom()
+    elif fhand == "nauczyciel":
+        person = Nauczyciel()
+        classroom = Classroom()
+    elif fhand == "wychowawca":
+        person = Wychowawca()
+        classroom = Classroom()
     else:
         break
+    osoba.data_input()
+    osoby[osoba.fullname] = osoba
+print(osoby)
+quit()
+
 
 #jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego" listę?
 #jak się do niej odwołać?
@@ -80,9 +105,7 @@ if arg == n.fullname:
 # TODO:
 #chodzi o argv = nazwa klasy
 elif arg in u.classroom:
-    .......
-    .......
-    .......
+    dsdss
 #ta część dość trudna, bo trzeba się do różnych klas odwoływać jednocześnie?
 else:
     quit()
