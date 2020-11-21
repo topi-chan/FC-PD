@@ -10,7 +10,10 @@ class Student:
     def data_input(self):
         self.fullname = input()
         self.classroom = input()
-        break
+
+    def data_output(self):
+        print(self.fullname)
+        print(self.classroom)
 
 
 class Teacher:
@@ -63,29 +66,35 @@ class Classroom:
         self.students = []
         self.mentor = ""
 
-    def appends(self):
-        self.classroom
-
+    # def appends(self):
+    #     if x
+    #     self.classroom =
+    #
+    # def data_output(self):
+    #
 
 klasy = {}
-osoby = {}
+persons = {}
 
 while True:
     fhand = input("Podaj typ użytkownika: ")
     if fhand == "uczen":
-        person = Uczen()
+        person = Student()
         classroom = Classroom()
     elif fhand == "nauczyciel":
-        person = Nauczyciel()
+        person = Teacher()
         classroom = Classroom()
     elif fhand == "wychowawca":
-        person = Wychowawca()
+        person = Mentor()
         classroom = Classroom()
     else:
         break
-    osoba.data_input()
-    osoby[osoba.fullname] = osoba
-print(osoby)
+    person.data_input()
+    persons[person.fullname] = person
+print(persons)
+for k, v in persons:
+    person = Student()
+    print(k, v(person.data_output()))
 quit()
 
 
