@@ -73,7 +73,7 @@ class Classroom:
     # def data_output(self):
     #
 
-klasy = {}
+classes = {}
 persons = {}
 
 while True:
@@ -91,12 +91,11 @@ while True:
         break
     person.data_input()
     persons[person.fullname] = person
-print(persons)
-for k, v in persons:
-    person = Student()
-    print(k, v(person.data_output()))
+x = persons["maciek"].classroom
+print(x)
 quit()
 
+persons
 
 #jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego" listę?
 #jak się do niej odwołać?
