@@ -4,23 +4,18 @@ arg = sys.argv[1]
 classes = {}
 persons = {}
 
-class Classroom:
-    def __init__(self):
-        self.teachers = []
-        self.mentor = ""
-
-
 class Student:
     def __init__(self):
         self.fullname = ""
         self.classroom = ""
 
     def data_input(self):
-        self.fullname = input()
-        self.classroom = input()
+        self.fullname = input("Podaj dane ucznia: ")
+        self.classroom = input("Podaj nazwę klasy: ")
 
     def data_output(self):
-        print(self.fullname)
+        for k, v in classes:
+            self.fullname
         print(self.classroom)
 
 
@@ -31,9 +26,9 @@ class Teacher:
         self.subject = []
 
     def data_input(self):
-        self.fullname = input("Podaj nazwisko nauczyciela: ")
+        self.fullname = input("Podaj dane nauczyciela: ")
         while True:
-            classrooms = input("Podaj nazwę klasy: ")
+            classrooms = input("Podaj prowadzone klasy: ")
             if not classrooms:
                 break
             self.classroom.append(classrooms)
@@ -50,9 +45,9 @@ class Mentor:
         self.classroom = []
 
     def data_input(self):
-        self.fullname = input("Podaj nazwisko wychowawcy: ")
+        self.fullname = input("Podaj dane wychowawcy: ")
         while True:
-            classrooms = input()
+            classrooms = input("Podaj prowadzone klasy: ")
             if not classrooms:
                 break
             self.classroom.append(classrooms)
@@ -60,6 +55,21 @@ class Mentor:
     def data_output(self):
         self.students.append()
         print("")
+
+
+class Classroom:
+    def __init__(self):
+        self.teachers = []
+        self.mentor = ""
+
+    def data_input_teacher(self):
+        teacher = Teacher()
+        self.teachers.append(teacher.fullname)
+
+    def data_input_mentor(self):
+        mentor = Mentor()
+        sef.mentor = mentor.fullname
+
     # pobrac osoby i klasy - slowniki
     # if d s f :
     #     dsdss"
@@ -87,27 +97,50 @@ while True:
         person = Mentor()
     else:
         break
-    classroom = Classroom()
     person.data_input()
     persons[person.fullname] = person
-    # if person.classroom not in classes:
-    #     classes[person.classroom] = None
-    # try:
-    #     classes[person.classroom] = x
+    if fhand == "uczen":
+        continue
+    classroom = Classroom()
+    for x in person.classroom:
+        classes[x] = classroom.data_input_teacher or classroom.data_input_mentor
 
 print(classes)
+print(persons)
 
-try:
-    x = persons[arg].classroom
-    print(x)
-except:
-    y = classes[arg].subject
-    print(y)
+if arg in persons:
+    for arg, v in persons.items():
+        if isinstance (v, Student):
+            print("Uczeń!")
+            output = Student()
+        if isinstance (v, Teacher):
+            print("Nie uczeń")
+            output = Teacher()
+        if isinstance (v, Mentor):
+            print("Nie uczeń")
+            output = Mentor()
+    output.data_output()
+
+elif arg in classes:
+    for arg, v in classes.items():
+        
+
+else:
+    print("Błąd")
+
 quit()
 
+# try:
+#     x = persons[arg].classroom
+#     print(x)
+# except:
+#     y = classes[arg].subject
+#     print(y)
+# quit()
+#
 
-#jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego" listę?
-#jak się do niej odwołać?
+#jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego"
+#listę? jak się do niej odwołać?
 #czyli np. dla ucznia: jeden z uczniów to X, i jest w klasie Y, a jednocześnie
 #nauczyciel Z uczy w klasie Y = muszę sprawdzić w liście tego nauczyciela
 #jakie prowadzi przedmioty, żeby wypisać przedmioty na które uczęszcza uczeń
