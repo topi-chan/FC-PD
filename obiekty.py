@@ -7,16 +7,17 @@ persons = {}
 class Student:
     def __init__(self):
         self.fullname = ""
-        self.classroom = ""
+        self.classroom = []
 
     def data_input(self):
         self.fullname = input("Podaj dane ucznia: ")
         self.classroom = input("Podaj nazwę klasy: ")
 
     def data_output(self):
+        x = classes.get(self.classroom, )
         for k, v in classes:
             self.fullname
-        print(self.classroom)
+        print("xxxx")
 
 
 class Teacher:
@@ -64,11 +65,14 @@ class Classroom:
 
     def data_input_teacher(self):
         teacher = Teacher()
-        self.teachers.append(teacher.fullname)
+        self.teachers.append(person.fullname)
 
     def data_input_mentor(self):
         mentor = Mentor()
-        sef.mentor = mentor.fullname
+        sef.mentor = mentor.self.fullname
+
+    def data_output(self):
+        print(self.mentor)
 
     # pobrac osoby i klasy - slowniki
     # if d s f :
@@ -103,27 +107,31 @@ while True:
         continue
     classroom = Classroom()
     for x in person.classroom:
-        classes[x] = classroom.data_input_teacher or classroom.data_input_mentor
+        try:
+            classes[x] = classroom.data_input_mentor()
+        except:
+            classes[x] = classroom.data_input_teacher()
 
 print(classes)
 print(persons)
 
 if arg in persons:
-    for arg, v in persons.items():
-        if isinstance (v, Student):
-            print("Uczeń!")
-            output = Student()
-        if isinstance (v, Teacher):
-            print("Nie uczeń")
-            output = Teacher()
-        if isinstance (v, Mentor):
-            print("Nie uczeń")
-            output = Mentor()
+    v = persons.get(arg, )
+    if isinstance (v, Student):
+        print("Uczeń!")
+        output = Student()
+    if isinstance (v, Teacher):
+        print("Nauczyciel")
+        output = Teacher()
+    if isinstance (v, Mentor):
+        print("Wychowawca")
+        output = Mentor()
     output.data_output()
 
 elif arg in classes:
+    output = Classroom()
     for arg, v in classes.items():
-        
+        print("Wychowawca: ", v.data_output)
 
 else:
     print("Błąd")
