@@ -16,10 +16,11 @@ class Student:
     def data_output(self):
         v = persons.values()
         for x in v:
-            student = Student()
-            if student.classroom in x.classroom:
-                if isinstance (x, Teacher):
-                    print(x.subject)
+            if isinstance (x, Teacher):
+                y = persons.values()
+                for z in y:
+                    if
+                print(x.subject)
                 # for xx in x.classroom:
                 #     if self.classroom == xx:
                 #     print(x.subject)
