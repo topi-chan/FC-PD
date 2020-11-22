@@ -16,17 +16,12 @@ class Student:
     def data_output(self):
         v = persons.values()
         for x in v:
-            if isinstance (x, Teacher):
-                y = persons.values()
-                for z in y:
-                    if
-                print(x.subject)
-
-                dodać fullname = arg !! żeby było wiadomo gdzie szukać 
-                # for xx in x.classroom:
-                #     if self.classroom == xx:
-                #     print(x.subject)
-                #         print("hello")
+            if x.fullname == arg:
+                for z in v:
+                    if isinstance (z, Teacher):
+                        if x.classroom in z.classroom:
+                            print(z.fullname)
+                            print(z.subject)
 
 
 class Teacher:
@@ -48,6 +43,15 @@ class Teacher:
                 break
             self.subject.append(subjects)
 
+    def data_output(self):
+        v = persons.values()
+        for x in v:
+            if x.fullname == arg:
+                for z in v:
+                    if isinstance (z, Mentor):
+                        for c in x.classroom:
+                            if c in z.classroom:
+                                print(z.fullname)
 
 class Mentor:
     def __init__(self):
@@ -63,8 +67,14 @@ class Mentor:
             self.classroom.append(classrooms)
 
     def data_output(self):
-        self.students.append()
-        print("")
+        v = persons.values()
+        for x in v:
+            if x.fullname == arg:
+                for z in v:
+                    if isinstance (z, Student):
+                        if z.classroom in x.classroom:
+                            print(z.fullname)
+
 
 
 # class Classroom:
@@ -113,9 +123,9 @@ while True:
     person.data_input()
     persons[person.fullname] = person
 #    classroom = Classroom()
-    if fhand == "wychowawca":
-        for x in person.classroom:
-            classes[x] = person.fullname
+    # if fhand == "wychowawca":
+    #     for x in person.classroom:
+    #         classes[x] = person.fullname
 
 print(classes)
 print(persons)
@@ -126,20 +136,33 @@ if arg in persons:
         print("Uczeń!")
         output = Student()
     if isinstance (v, Teacher):
-        print("Nauczyciel")
+        print("Nauczyciel!")
         output = Teacher()
     if isinstance (v, Mentor):
-        print("Wychowawca")
+        print("Wychowawca!")
         output = Mentor()
     output.data_output()
 
-elif arg in classes:
-    output = Classroom()
-    for arg, v in classes.items():
-        print("Wychowawca: ", v.data_output)
-
 else:
-    print("Błąd")
+    v = persons.values()
+    for x in v:
+        if isinstance (x, Student):
+            if x.classroom == arg:
+                print("Uczeń: ", x.fullname)
+    n = persons.values()
+    for y in n:
+        if isinstance (y, Mentor):
+            if arg in y.classroom:
+                print("Wychowawca: ", y.fullname)
+
+
+# elif arg in classes:
+#     output = Classroom()
+#     for arg, v in classes.items():
+#         print("Wychowawca: ", v.data_output)
+#
+# else:
+#     print("Błąd")
 
 quit()
 
