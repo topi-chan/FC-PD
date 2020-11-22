@@ -1,6 +1,14 @@
 import sys
 arg = sys.argv[1]
 
+classes = {}
+persons = {}
+
+class Classroom:
+    def __init__(self):
+        self.teachers = []
+        self.mentor = ""
+
 
 class Student:
     def __init__(self):
@@ -23,15 +31,14 @@ class Teacher:
         self.subject = []
 
     def data_input(self):
-        self.fullname = input()
+        self.fullname = input("Podaj nazwisko nauczyciela: ")
         while True:
-            classrooms = input()
+            classrooms = input("Podaj nazwę klasy: ")
             if not classrooms:
                 break
             self.classroom.append(classrooms)
         while True:
-            subjects = input()
-            self.subject = input()
+            subjects = input("Podaj nazwę przedmiotu: ")
             if not subjects:
                 break
             self.subject.append(subjects)
@@ -43,7 +50,7 @@ class Mentor:
         self.classroom = []
 
     def data_input(self):
-        self.fullname = input()
+        self.fullname = input("Podaj nazwisko wychowawcy: ")
         while True:
             classrooms = input()
             if not classrooms:
@@ -58,13 +65,8 @@ class Mentor:
     #     dsdss"
     # else dsokdso:
 
+#    def data_input(self):
 
-class Classroom:
-    def __init__(self):
-        self.classroom = ""
-        self.teachers = []
-        self.students = []
-        self.mentor = ""
 
     # def appends(self):
     #     if x
@@ -73,29 +75,36 @@ class Classroom:
     # def data_output(self):
     #
 
-classes = {}
-persons = {}
+
 
 while True:
     fhand = input("Podaj typ użytkownika: ")
     if fhand == "uczen":
         person = Student()
-        classroom = Classroom()
     elif fhand == "nauczyciel":
         person = Teacher()
-        classroom = Classroom()
     elif fhand == "wychowawca":
         person = Mentor()
-        classroom = Classroom()
     else:
         break
+    classroom = Classroom()
     person.data_input()
     persons[person.fullname] = person
-x = persons["maciek"].classroom
-print(x)
+    # if person.classroom not in classes:
+    #     classes[person.classroom] = None
+    # try:
+    #     classes[person.classroom] = x
+
+print(classes)
+
+try:
+    x = persons[arg].classroom
+    print(x)
+except:
+    y = classes[arg].subject
+    print(y)
 quit()
 
-persons
 
 #jak do KONKRETNEGO, jednego z wielu utworzonych, obiektu, przypisać "jego" listę?
 #jak się do niej odwołać?
