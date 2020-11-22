@@ -7,17 +7,23 @@ persons = {}
 class Student:
     def __init__(self):
         self.fullname = ""
-        self.classroom = []
+        self.classroom = ""
 
     def data_input(self):
         self.fullname = input("Podaj dane ucznia: ")
         self.classroom = input("Podaj nazwę klasy: ")
 
     def data_output(self):
-        x = classes.get(self.classroom, )
-        for k, v in classes:
-            self.fullname
-        print("xxxx")
+        v = persons.values()
+        for x in v:
+            student = Student()
+            if student.classroom in x.classroom:
+                if isinstance (x, Teacher):
+                    print(x.subject)
+                # for xx in x.classroom:
+                #     if self.classroom == xx:
+                #     print(x.subject)
+                #         print("hello")
 
 
 class Teacher:
@@ -58,21 +64,21 @@ class Mentor:
         print("")
 
 
-class Classroom:
-    def __init__(self):
-        self.teachers = []
-        self.mentor = ""
-
-    def data_input_teacher(self):
-        teacher = Teacher()
-        self.teachers.append(person.fullname)
-
-    def data_input_mentor(self):
-        mentor = Mentor()
-        sef.mentor = mentor.self.fullname
-
-    def data_output(self):
-        print(self.mentor)
+# class Classroom:
+#     def __init__(self):
+#         self.teachers = []
+#         self.mentor = ""
+#
+#     def data_input_teacher(self):
+#         teacher = Teacher()
+#         self.teachers.append(person.fullname)
+#
+#     def data_input_mentor(self):
+#         mentor = Mentor()
+#         sef.mentor = mentor(self, self.fullname)
+#
+#     def data_output(self):
+#         print(self.mentor)
 
     # pobrac osoby i klasy - slowniki
     # if d s f :
@@ -103,14 +109,10 @@ while True:
         break
     person.data_input()
     persons[person.fullname] = person
-    if fhand == "uczen":
-        continue
-    classroom = Classroom()
-    for x in person.classroom:
-        try:
-            classes[x] = classroom.data_input_mentor()
-        except:
-            classes[x] = classroom.data_input_teacher()
+#    classroom = Classroom()
+    if fhand == "wychowawca":
+        for x in person.classroom:
+            classes[x] = person.fullname
 
 print(classes)
 print(persons)
