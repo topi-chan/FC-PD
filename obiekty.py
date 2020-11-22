@@ -21,6 +21,8 @@ class Student:
                 for z in y:
                     if
                 print(x.subject)
+
+                dodać fullname = arg !! żeby było wiadomo gdzie szukać 
                 # for xx in x.classroom:
                 #     if self.classroom == xx:
                 #     print(x.subject)
