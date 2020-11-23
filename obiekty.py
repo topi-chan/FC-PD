@@ -14,13 +14,11 @@ class Student:
 
     def data_output(self):
         v = persons.values()
-        for x in v:
-            if x.fullname == arg:
-                for z in v:
-                    if isinstance (z, Teacher):
-                        if x.classroom in z.classroom:
-                            print("Nauczyciel: ", z.fullname)
-                            print("Przedmioty: ", z.subject)
+        for z in v:
+            if isinstance (z, Teacher):
+                if self.classroom in z.classroom:
+                    print("Nauczyciel: ", z.fullname)
+                    print("Przedmioty: ", z.subject)
 
 
 class Teacher:
@@ -44,13 +42,11 @@ class Teacher:
 
     def data_output(self):
         v = persons.values()
-        for x in v:
-            if x.fullname == arg:
-                for z in v:
-                    if isinstance (z, Mentor):
-                        for c in x.classroom:
-                            if c in z.classroom:
-                                print("Wychowawca: ", z.fullname)
+        for z in v:
+            if isinstance (z, Mentor):
+                for c in self.classroom:
+                    if c in z.classroom:
+                        print("Wychowawca: ", z.fullname)
 
 class Mentor:
     def __init__(self):
@@ -67,17 +63,15 @@ class Mentor:
 
     def data_output(self):
         v = persons.values()
-        for x in v:
-            if x.fullname == arg:
-                for z in v:
-                    if isinstance (z, Student):
-                        if z.classroom in x.classroom:
-                            print(z.fullname)
+        for z in v:
+            if isinstance (z, Student):
+                if z.classroom in self.classroom:
+                    print(z.fullname)
 
 
 while True:
     fhand = input("Podaj typ użytkownika: ")
-    if fhand == "uczeń":
+    if fhand == "uczen":
         person = Student()
     elif fhand == "nauczyciel":
         person = Teacher()
@@ -89,14 +83,8 @@ while True:
     persons[person.fullname] = person
 
 if arg in persons:
-    v = persons.get(arg, )
-    if isinstance (v, Student):
-        output = Student()
-    if isinstance (v, Teacher):
-        output = Teacher()
-    if isinstance (v, Mentor):
-        output = Mentor()
-    output.data_output()
+    v = persons.get(arg)
+    v.data_output()
 
 else:
     v = persons.values()
