@@ -59,8 +59,7 @@ class Teacher:
 
     def data_output(self):
         for classroom in self.classroom:
-            if classroom in classrooms:
-                print("Wychowawca: ", classrooms[classroom].mentor)
+            print("Wychowawca: ", classrooms[classroom].mentor)
 
 class Mentor:
     def __init__(self):
@@ -81,11 +80,9 @@ class Mentor:
                 classrooms[classroom].mentor = self.fullname
 
     def data_output(self):
-        v = persons.values()
-        for z in v:
-            if isinstance (z, Student):
-                if z.classroom in self.classroom:
-                    print(z.fullname)
+        for classroom in self.classroom:
+            for students in classrooms[classroom].students:
+                print("Uczniowie: ", classrooms[classroom].students.fullname)
 
 
 while True:
