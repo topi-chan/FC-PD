@@ -1,4 +1,4 @@
-from sys import argv
+import sys
 arg = sys.argv[1]
 
 persons = {}
@@ -25,7 +25,8 @@ class Student:
         self.classroom = classrooms[classroom]
         self.classroom.students.append(self)
 
-# TODO: wydrukować ładnie listę w teacher.subject, for subject, in teacher.subject print subject
+# TODO: wydrukować ładnie listę w teacher.subject, for subject, in teacher.subject
+#print subject, albo znaleźć inną metodę, na wprowadzenie tego ładnie jedno pod drugim
     def data_output(self):
         for teacher in self.classroom.teachers:
             print("Nauczyciel: ", teacher.fullname)
@@ -42,19 +43,19 @@ class Teacher:
     def data_input(self):
         self.fullname = input("Podaj dane nauczyciela: ")
         while True:
-            classrooms = input("Podaj prowadzone klasy: ")
-            if not classrooms:
+            classroom = input("Podaj prowadzone klasy: ")
+            if not classroom:
                 break
-            self.classroom.append(classrooms)
+            self.classroom.append(classroom)
+            if classroom not in classrooms:
+                classrooms[classroom] = Classroom(classroom)
+            self.classroom = classrooms[classroom]
+            self.classroom.teachers.append(self)
         while True:
             subjects = input("Podaj nazwę przedmiotu: ")
             if not subjects:
                 break
             self.subject.append(subjects)
-        if classroom not in classrooms:
-            classrooms[classroom] = Classroom(classroom)
-        self.classroom = classrooms[classroom]
-        self.classroom.teachers.append(self)
 
     def data_output(self):
         v = persons.values()
@@ -72,14 +73,14 @@ class Mentor:
     def data_input(self):
         self.fullname = input("Podaj dane wychowawcy: ")
         while True:
-            classrooms = input("Podaj prowadzone klasy: ")
-            if not classrooms:
+            classroom = input("Podaj prowadzone klasy: ")
+            if not classroom:
                 break
             self.classroom.append(classrooms)
-        if classroom not in classrooms:
-            classrooms[classroom] = Classroom(classroom)
-        self.classroom = classrooms[classroom]
-        self.classroom.mentor.append(self)
+            if classroom not in classrooms:
+                classrooms[classroom] = Classroom(classroom)
+            self.classroom = classrooms[classroom]
+            self.classroom.mentor = self.fullname
 
     def data_output(self):
         v = persons.values()
