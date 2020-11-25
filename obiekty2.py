@@ -5,11 +5,16 @@ persons = {}
 classrooms = {}
 
 class Classroom:
-     def __init__(self, classroom):
-         self.classroom = classroom
-         self.teachers = []
-         self.students = []
-         self.mentor = ""
+    def __init__(self, classroom):
+        self.classroom = classroom
+        self.teachers = []
+        self.students = []
+        self.mentor = ""
+
+    def data_output(self):
+        print("Wychowawca: ", self.mentor)
+        for student in self.students:
+            print("Uczeń: ", student.fullname)
 
 
 class Student:
@@ -48,8 +53,7 @@ class Teacher:
             self.classroom.append(classroom)
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
-            else:
-                classrooms[classroom].teachers.append(self)
+            classrooms[classroom].teachers.append(self)
         while True:
             subjects = input("Podaj nazwę przedmiotu: ")
             if not subjects:
@@ -74,8 +78,7 @@ class Mentor:
             self.classroom.append(classroom)
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
-            else:
-                classrooms[classroom].mentor = self.fullname
+            classrooms[classroom].mentor = self.fullname
 
     def data_output(self):
         for classroom in self.classroom:
@@ -100,15 +103,11 @@ if arg in persons:
     v = persons.get(arg)
     v.data_output()
 
+elif arg in classrooms:
+    c = classrooms.get(arg)
+    c.data_output()
+
 else:
-    v = persons.values()
-    for x in v:
-        if isinstance (x, Student):
-            if x.classroom == arg:
-                print("Uczeń: ", x.fullname)
-    n = persons.values()
-    for y in n:
-        if isinstance (y, Mentor):
-            if arg in y.classroom:
-                print("Wychowawca: ", y.fullname)
+    print("Błąd - nie znalezniono osoby / klasy")
+
 quit()
