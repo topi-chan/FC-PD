@@ -29,9 +29,8 @@ class Student:
 #print subject, albo znaleźć inną metodę, na wprowadzenie tego ładnie jedno pod drugim
     def data_output(self):
         for teacher in self.classroom.teachers:
-            print("Nauczyciel: ", teacher.fullname)
+            print("Nauczyciele: ", teacher.fullname)
             print("Przedmioty: ", teacher.subject)
-        print("Wychowawca: ", self.classroom.mentor)
 
 
 class Teacher:
@@ -58,12 +57,7 @@ class Teacher:
             self.subject.append(subjects)
 
     def data_output(self):
-        v = persons.values()
-        for z in v:
-            if isinstance (z, Mentor):
-                for c in self.classroom:
-                    if c in z.classroom:
-                        print("Wychowawca: ", z.fullname)
+        print("Wychowawcy: ", self.classroom.mentor)
 
 class Mentor:
     def __init__(self):
