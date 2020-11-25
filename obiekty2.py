@@ -70,7 +70,7 @@ class Mentor:
             classroom = input("Podaj prowadzone klasy: ")
             if not classroom:
                 break
-            self.classroom.append(classrooms)
+            self.classroom.append(classroom)
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
             self.classroom = classrooms[classroom]
