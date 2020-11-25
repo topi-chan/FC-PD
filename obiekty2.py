@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 arg = sys.argv[1]
 
 persons = {}
@@ -25,10 +25,12 @@ class Student:
         self.classroom = classrooms[classroom]
         self.classroom.students.append(self)
 
+# TODO: wydrukować ładnie listę w teacher.subject, for subject, in teacher.subject print subject
     def data_output(self):
         for teacher in self.classroom.teachers:
             print("Nauczyciel: ", teacher.fullname)
             print("Przedmioty: ", teacher.subject)
+        print("Wychowawca: ", self.classroom.mentor)
 
 
 class Teacher:
@@ -49,6 +51,10 @@ class Teacher:
             if not subjects:
                 break
             self.subject.append(subjects)
+        if classroom not in classrooms:
+            classrooms[classroom] = Classroom(classroom)
+        self.classroom = classrooms[classroom]
+        self.classroom.teachers.append(self)
 
     def data_output(self):
         v = persons.values()
@@ -70,6 +76,10 @@ class Mentor:
             if not classrooms:
                 break
             self.classroom.append(classrooms)
+        if classroom not in classrooms:
+            classrooms[classroom] = Classroom(classroom)
+        self.classroom = classrooms[classroom]
+        self.classroom.mentor.append(self)
 
     def data_output(self):
         v = persons.values()
