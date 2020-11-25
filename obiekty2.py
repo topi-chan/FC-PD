@@ -49,7 +49,6 @@ class Teacher:
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
             else:
-#                self.classroom = classrooms[classroom]
                 classrooms[classroom].teachers.append(self)
         while True:
             subjects = input("Podaj nazwę przedmiotu: ")
@@ -76,13 +75,12 @@ class Mentor:
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
             else:
-#                self.classroom = classrooms[classroom]
                 classrooms[classroom].mentor = self.fullname
 
     def data_output(self):
         for classroom in self.classroom:
-            for students in classrooms[classroom].students:
-                print("Uczniowie: ", classrooms[classroom].students.fullname)
+            for classroom in classrooms[classroom].students:
+                print("Uczniowie: ", classroom.fullname)
 
 
 while True:
