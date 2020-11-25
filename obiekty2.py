@@ -48,8 +48,9 @@ class Teacher:
             self.classroom.append(classroom)
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
-            self.classroom = classrooms[classroom]
-            self.classroom.teachers.append(self)
+            else:
+#                self.classroom = classrooms[classroom]
+                classrooms[classroom].teachers.append(self)
         while True:
             subjects = input("Podaj nazwę przedmiotu: ")
             if not subjects:
@@ -57,7 +58,9 @@ class Teacher:
             self.subject.append(subjects)
 
     def data_output(self):
-        print("Wychowawcy: ", self.classroom.mentor)
+        for classroom in self.classroom:
+            if classroom in classrooms:
+                print("Wychowawca: ", classrooms[classroom].mentor)
 
 class Mentor:
     def __init__(self):
@@ -73,8 +76,9 @@ class Mentor:
             self.classroom.append(classroom)
             if classroom not in classrooms:
                 classrooms[classroom] = Classroom(classroom)
-            self.classroom = classrooms[classroom]
-            self.classroom.mentor = self.fullname
+            else:
+#                self.classroom = classrooms[classroom]
+                classrooms[classroom].mentor = self.fullname
 
     def data_output(self):
         v = persons.values()
