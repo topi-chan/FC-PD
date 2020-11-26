@@ -8,5 +8,15 @@ komentarz = sys.argv[3]
 saldo += dodanie
 lista.append(dodanie)
 lista.append(komentarz)
-for element in lista:
-    print(element)
+
+def file_write(fname):
+    lista2 = []
+    fd = open(fname, "a")
+    for element in lista:
+        element_str = str(element)
+        lista2.append(element_str)
+    for element_str in lista2:
+        fd.write(element_str)
+        fd.write("\n")
+
+file_write(sys.argv[1])
