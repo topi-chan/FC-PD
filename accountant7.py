@@ -25,7 +25,11 @@ while True:
         line = line.rstrip()
         if line.startswith("saldo"):
             lista.append(line)
-        else:
+        try:
+            line = int(line)
+            lista.append(line)
+            continue
+        except:
             pass
         print(line)
             # saldo += line+1
