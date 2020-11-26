@@ -1,3 +1,5 @@
+import time
+
 def file_read(fhand):
     saldo = 0
     lista = []
@@ -5,8 +7,8 @@ def file_read(fhand):
     fhand = open(fhand)
     while True:
         fh = fhand.readline().strip()
-        print(fh)
-        time.sleep(1)
+        # print(fh)
+        # time.sleep(1)
         if fh.startswith("saldo"):
             lista.append(fh)
             money = fhand.readline().strip()
@@ -16,6 +18,7 @@ def file_read(fhand):
             lista.append(com)
             fh
         if fh.startswith("zakup"):
+            lista.append(fh)
             name = fhand.readline().strip()
             price = int(fhand.readline().strip())
             if price < 0:
@@ -36,6 +39,7 @@ def file_read(fhand):
                 print("Błąd - brak wystarczającej ilości środków na koncie")
                 quit()
         if fh.startswith("sprzedaż"):
+            lista.append(fh)
             name = fhand.readline().strip()
             if name in magazyn:
                 price = int(fhand.readline().strip())
@@ -60,5 +64,6 @@ def file_read(fhand):
                 print("Brak takiego produktu w magazynie")
                 quit()
         if fh.startswith("stop"):
+            lista.append(fh)
             return (saldo, lista, magazyn)
             break
