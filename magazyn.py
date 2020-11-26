@@ -67,3 +67,37 @@ def file_read(fhand):
             lista.append(fh)
             return (saldo, lista, magazyn)
             break
+
+def file_write_saldo(fname):
+    from saldo import lista
+    lista2 = []
+    fd = open(fname, "a")
+    for element in lista:
+        element_str = str(element)
+        lista2.append(element_str)
+    for element_str in lista2:
+        fd.write(element_str)
+        fd.write("\n")
+
+def file_write_sprzedaz(fname):
+    from sprzedaz import lista
+    print(lista)
+    lista2 = []
+    fd = open(fname, "a")
+    for element in lista:
+        element_str = str(element)
+        lista2.append(element_str)
+    for element_str in lista2:
+        fd.write(element_str)
+        fd.write("\n")
+
+def file_write_zakup(fname):
+    from zakup import lista
+    lista2 = []
+    fd = open(fname, "a")
+    for element in lista:
+        element_str = str(element)
+        lista2.append(element_str)
+    for element_str in lista2:
+        fd.write(element_str)
+        fd.write("\n")

@@ -1,6 +1,6 @@
 import sys
 import time
-from magazyn import file_read
+from magazyn import file_read, file_write_sprzedaz
 
 (saldo, lista, magazyn) = file_read(sys.argv[1])
 nazwanie = sys.argv[2]
@@ -9,5 +9,5 @@ sztuki = int(sys.argv[4])
 lista.append(nazwanie)
 lista.append(ceny)
 lista.append(sztuki)
-for element in lista:
-    print(element)
+
+file_write_sprzedaz(sys.argv[1])
