@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import sys
 
@@ -6,73 +5,130 @@ saldo = 0
 lista = []
 magazyn = {}
 produkty = []
-komentarze = []
 counts = {}
-przeglad = []
-#w kazdym trybie programu mozna dodatkowo sprawdzic stan magazynu przez dodanie:
-# "print("Stan magazynu: ", magazyn)" po "if fhand == "stop":"
-#dla 'salda' można w ten sposób sprawdzić komentarze
-
-# po wprowadzeniu danych z < in.txt coś się dzieje z kodowaniem znaków i wyskakują tracebacki
-
 
 x = str(sys.argv[1])
 
-#zrobilem wg treści zadania - tj. wymagam podania wartosci początkowej salda
+
+def file_read(name, mode):
+    fhand = open(name)
+    for line in fhand:
+        line = line.strip()
+    if mode == "saldo":
+        y = int(sys.argv[2])
+        z = sys.argv[3]
+        saldo += y
+        lista.append(y)
+        lista.append(z)
+        print(saldo)
+    if mode == "magazyn":
+        for k, v in magazyn.items():
+            print(k, v)
+    if mode == "zakup" or mode == "sprzedaż":
+        x
+
+# ? file_read(argv[1], argv[2])
+# ?name = sys.argv[1]
+# ?mode = sys.argv[2]
+
+while True:
+    fhand = input("Komenda? ")
+    lista.append(fhand)
+    if fhand == "stop":
+        if x =="saldo":
+            y = int(sys.argv[2])
+            z = sys.argv[3]
+            saldo += y
+            lista.append(y)
+            lista.append(z)
+            break
+    if fhand == "saldo":
+        zmiana = int(input("Podaj zmianę konta "))
+        lista.append(zmiana)
+        saldo += zmiana
+        komentarz = str(input("Dodaj komentarz "))
+        lista.append(komentarz)
+        continue
+    if fhand == "zakup":
+        nazwa = str(input("Nazwa produktu? "))
+        cena = int(input("Cena produktu? "))
+        if cena < 0:
+            print("Błąd - cena nie może być mniejsza od zera")
+            continue
+        sztuk = int(input("Liczba sztuk? "))
+        sztuk
+        if sztuk < 0:
+            print("Błąd - liczba sztuk nie może być mniejsza od zera")
+            continue
+        if (cena * sztuk) <= saldo:
+            lista.append(nazwa)
+            lista.append(cena)
+            lista.append(sztuk)
+            magazyn[nazwa] = magazyn.get(nazwa, 0) +sztuk
+            saldo -= (cena * sztuk)
+            continue
+        else:
+            print("Błąd - brak środków na koncie")
+            continue
+    if fhand == "sprzedaż":
+        nazwa = str(input("Nazwa produktu? "))
+        if nazwa in magazyn:
+            cena = int(input("Cena produktu? "))
+            if cena < 0:
+                print("Błąd - cena nie może być mniejsza od zera")
+                continue
+            sztuk = int(input("Liczba sztuk? "))
+            if sztuk < 0:
+                print("Błąd - liczba sztuk nie może być mniejsza od zera")
+                continue
+            lista.append(nazwa)
+            lista.append(cena)
+            lista.append(sztuk)
+            magazyn[nazwa] = magazyn.get(nazwa, 0) -sztuk
+            saldo += (cena * sztuk)
+            continue
+        else:
+            print("Błąd - nie ma takiego produktu w magazynie")
+            continue
+    else:
+        print("Błąd")
+        continue
+
+print(magazyn)
+print(lista)
+print(saldo)
+
+
+quit()
+
+argv1 = open
+
 if x == "saldo":
-    try:
         y = int(sys.argv[2])
         z = str(sys.argv[3])
         saldo += y
+
+
+elif x == "magazyn":
+    try:
+        y = str(sys.argv[2])
+        z = str(sys.argv[3])
+        v = str(sys.argv[4])
     except:
-        print("Błąd - dla polecenia 'saldo' podaj wartość liczbową zmiany na koncie i komentarz")
+        print("Błąd - dla polecenia 'magazyn' podaj trzy identyfikatory produktu")
         quit()
     while True:
         fhand = input()
         fhand
-        lista.append(fhand)
         if fhand == "stop":
-            print(saldo)
+            for produkt in produkty:
+                if produkt not in counts:
+                   counts[produkt] = 1
+                else:
+                    counts[produkt] = counts[produkt] + 1
+            for k, v in counts.items():
+                print(k, v)
             break
-        if fhand == "saldo":
-            zmiana = int(input())
-            zmiana
-            saldo += zmiana
-            komentarz = str(input())
-            komentarz
-            komentarze.append(komentarz)
-            continue
-        if fhand == "zakup":
-            nazwa = str(input())
-            nazwa
-            cena = int(input())
-            cena
-            sztuk = int(input())
-            sztuk
-            if (cena * sztuk) <= saldo:
-                magazyn[nazwa] = magazyn.get(nazwa, 0) +sztuk
-            else:
-                print("Błąd")
-                continue
-            saldo -= (cena * sztuk)
-            continue
-        if fhand == "sprzedaż":
-            nazwa = str(input())
-            nazwa
-            if nazwa in magazyn:
-                magazyn[nazwa] = magazyn.get(nazwa, 0) -sztuk
-            else:
-                print("Błąd")
-                continue
-            cena = int(input())
-            cena
-            sztuk = int(input())
-            sztuk
-            saldo += (cena * sztuk)
-            continue
-        else:
-            print("Błąd")
-            continue
 
 # ten fragment kodu - nie rozumiem do końca zasady wywołania, tzn.
 # "Jeśli jeśli na magazynie nie ma wystarczającej liczby sztuk
