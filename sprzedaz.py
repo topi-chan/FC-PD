@@ -1,6 +1,6 @@
 import sys
 import time
-from magazyn import file_read, file_write_sprzedaz
+from magazyn import file_read, file_write
 
 (saldo, lista, magazyn) = file_read(sys.argv[1])
 nazwanie = sys.argv[2]
@@ -10,4 +10,4 @@ lista.append(nazwanie)
 lista.append(ceny)
 lista.append(sztuki)
 
-file_write_sprzedaz(sys.argv[1])
+file_write(sys.argv[1], lista)
