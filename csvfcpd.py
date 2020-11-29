@@ -6,12 +6,12 @@ import os
 with open('/Users/maciek/addresses.csv', 'r') as f:
     reader = csv.reader(f)
     next(reader)
-    next(reader)
+    # next(reader)
     for line in reader:
         print(line)
-    lines = list(reader)
-print(lines)
 
+
+quit()
 
 def csv_write (file, line, column, content):
     column_counter = 0
@@ -19,7 +19,9 @@ def csv_write (file, line, column, content):
         with open(file, "w") as f:
             writer = csv.writer(f)
             while True:
-                x =
+                x = x
+                count = int(column)
+
                 y = next(reader)
             csv_file = writer.writerow(["Maciej", "Topolewski", "Katowice", "PL"])
     except:
