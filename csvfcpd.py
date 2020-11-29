@@ -13,16 +13,29 @@ with open('/Users/maciek/addresses.csv', 'r') as f:
 
 quit()
 
-def csv_write (file, line, column, content):
-    column_counter = 0
+#
+# f = open('mylist.csv', 'r')
+# reader = csv.reader(f)
+# mylist = list(reader)
+# f.close()
+# mylist[1][3] = 'X'
+# my_new_list = open('mylist.csv', 'w', newline = '')
+# csv_writer = csv.writer(my_new_list)
+# csv_writer.writerows(mylist)
+# my_new_list.close()
+
+def csv_write (file, row, column, content):
     try:
         with open(file, "w") as f:
             writer = csv.writer(f)
-            while True:
-                x = x
-                count = int(column)
+            count_row = 0
+            count_column = 0
+            for line in writer:
+                count_row = count_row + 1
+                for item in line:
+                    count_column = count_column + 1
+            items = count_row + count_column
 
-                y = next(reader)
             csv_file = writer.writerow(["Maciej", "Topolewski", "Katowice", "PL"])
     except:
         print(os.listdir(file))
