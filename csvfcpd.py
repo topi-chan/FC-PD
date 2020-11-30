@@ -9,20 +9,10 @@ with open('/Users/maciek/addresses.csv', 'r') as f:
     # next(reader)
     for line in reader:
         list.append(line)
-
-print(list)
+for l in list:
+    print(l)
 quit()
 
-#
-# f = open('mylist.csv', 'r')
-# reader = csv.reader(f)
-# mylist = list(reader)
-# f.close()
-# mylist[1][3] = 'X'
-# my_new_list = open('mylist.csv', 'w', newline = '')
-# csv_writer = csv.writer(my_new_list)
-# csv_writer.writerows(mylist)
-# my_new_list.close()
 
 def csv_write (file, row, column, content):
     try:
@@ -36,10 +26,12 @@ def csv_write (file, row, column, content):
                     count_column = count_column + 1
             items = count_row + count_column
 
-            csv_file = writer.writerow(["Maciej", "Topolewski", "Katowice", "PL"])
+            for item[3[2]] in list:
+                csv_file = writer.writerow(["Maciej"])
     except:
         print(os.listdir(file))
     return csv_file
+
 #file_to_save = csv_file
 def csv_save(directory, file_name, file_to_save):
     save = os.path.join(directory, file_name)
@@ -51,24 +43,37 @@ csv_write(sys.argv[1], sys.argv[3], sys.argv[4], sys.argv[5])
 
 csv_save(sys.argv[2], 'addresses.csv', csv_file)
 
-# with open('/Users/maciek/csv/addresses.csv', "w") as f:
-#     writer = csv.writer(f)
-#     writer.writerow(["Maciej", "Topolewski", "Katowice", "PL"])
-
-
 df = pd.read_csv('/Users/maciek/addresses.csv')
 print(df)
 
-
-
-
-
-#import petl - pandas pod csv
 
 # f_open = sys.argv[1]
 # f_read = sys.argv[2]
 #for arg in sys.argv[3:]:
 #      x
+
+
+
+
+# with open('/Users/maciek/csv/addresses.csv', "w") as f:
+#     writer = csv.writer(f)
+#     writer.writerow(["Maciej", "Topolewski", "Katowice", "PL"])
+
+
+
+#
+# f = open('mylist.csv', 'r')
+# reader = csv.reader(f)
+# mylist = list(reader)
+# f.close()
+# mylist[1][3] = 'X'
+# my_new_list = open('mylist.csv', 'w', newline = '')
+# csv_writer = csv.writer(my_new_list)
+# csv_writer.writerows(mylist)
+# my_new_list.close()
+
+
+#import petl - pandas pod csv
 
 
 #
