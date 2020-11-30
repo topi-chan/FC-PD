@@ -2,43 +2,37 @@ import csv
 import sys
 import pandas as pd
 import os
-list = []
-
-with open('/Users/maciek/addresses.csv', 'r') as f:
-    reader = csv.reader(f)
-    # next(reader)
-    for line in reader:
-        list.append(line)
-# for l in list:
-#     print(l)
-
-print(list[3][2])
-quit()
 
 
 def csv_read (file):
     try:
         list = []
-        with open(file, "w") as f:
+        with open(file, "r") as f:
             reader = csv.reader(f)
             for line in reader:
                 list.append(line)
-
-
-#            csv_file = reader.writerow([content])
     except:
         print(os.listdir(file))
     return list
 
-def csv_define (arg, list, row, column, content):
-    for a in arg:
-         x
-    count_column = 0
-    for count_row, line in enumerate(reader):
-        count_column = len(line)
-    items = count_row + count_column
-    list[row]
+def csv_define (list):
+    for arg in sys.argv[3:]:
+        change = change.split(",")
+        Y = int(change[0])
+        X = int(change[1])
+        value = change[2]
+    # count_column = 0
+    # for count_row, line in enumerate(reader):
+    #     count_column = len(line)
+    # items = count_row + count_column
+    # list[row]
     list[row][column] = content
+
+#     for change in argv[3:]:
+
+#         csvList[Y][X] = value
+
+
 
 #file_to_save = csv_file
 def csv_save(directory, file_name, file_to_save):
@@ -50,7 +44,11 @@ def csv_save(directory, file_name, file_to_save):
     file.write(file_to_save)
     file.close()
 
-list = csv_read(sys.argv[1], sys.argv[3], sys.argv[4], sys.argv[5])
+list = csv_read(sys.argv[1])
+
+print(list[3][2])
+
+quit()
 
 csv_define()
 
@@ -67,6 +65,19 @@ f_read = sys.argv[2]
 for arg in sys.argv[3:]:
      x
 
+
+
+
+
+# with open('/Users/maciek/addresses.csv', 'r') as f:
+#     reader = csv.reader(f)
+#     # next(reader)
+#     for line in reader:
+#         list.append(line)
+# # for l in list:
+# #     print(l)
+#
+# quit()
 
 
 
