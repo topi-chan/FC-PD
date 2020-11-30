@@ -30,7 +30,7 @@ def csv_save(original_file, directory, file_name, file_to_save):
     for line in file_to_save:
         csv_writer.writerow(line)
     save = os.path.join(directory, file_name)
-    file.close()
+    f.close()
 
 list = csv_read(sys.argv[1])
 
