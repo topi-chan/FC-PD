@@ -9,48 +9,63 @@ with open('/Users/maciek/addresses.csv', 'r') as f:
     # next(reader)
     for line in reader:
         list.append(line)
-for l in list:
-    print(l)
+# for l in list:
+#     print(l)
+
+print(list[3][2])
 quit()
 
 
-def csv_write (file, row, column, content):
+def csv_read (file):
     try:
+        list = []
         with open(file, "w") as f:
-            writer = csv.writer(f)
-            count_row = 0
-            count_column = 0
-            for line in writer:
-                count_row = count_row + 1
-                for item in line:
-                    count_column = count_column + 1
-            items = count_row + count_column
+            reader = csv.reader(f)
+            for line in reader:
+                list.append(line)
 
-            for item[3[2]] in list:
-                csv_file = writer.writerow(["Maciej"])
+
+#            csv_file = reader.writerow([content])
     except:
         print(os.listdir(file))
-    return csv_file
+    return list
+
+def csv_define (arg, list, row, column, content):
+    for a in arg:
+         x
+    count_column = 0
+    for count_row, line in enumerate(reader):
+        count_column = len(line)
+    items = count_row + count_column
+    list[row]
+    list[row][column] = content
 
 #file_to_save = csv_file
 def csv_save(directory, file_name, file_to_save):
+    writer
+    for l in list:
+        writer.writerow(l)
     save = os.path.join(directory, file_name)
     file = open(save, 'w')
     file.write(file_to_save)
     file.close()
 
-csv_write(sys.argv[1], sys.argv[3], sys.argv[4], sys.argv[5])
+list = csv_read(sys.argv[1], sys.argv[3], sys.argv[4], sys.argv[5])
 
-csv_save(sys.argv[2], 'addresses.csv', csv_file)
+csv_define()
 
-df = pd.read_csv('/Users/maciek/addresses.csv')
-print(df)
+csv_save(sys.argv[2], 'addresses.csv', list)
 
 
-# f_open = sys.argv[1]
-# f_read = sys.argv[2]
-#for arg in sys.argv[3:]:
-#      x
+
+# df = pd.read_csv('/Users/maciek/addresses.csv')
+# print(df)
+
+
+f_open = sys.argv[1]
+f_read = sys.argv[2]
+for arg in sys.argv[3:]:
+     x
 
 
 
