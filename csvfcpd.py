@@ -2,15 +2,15 @@ import csv
 import sys
 import pandas as pd
 import os
+list = []
 
 with open('/Users/maciek/addresses.csv', 'r') as f:
     reader = csv.reader(f)
-    next(reader)
     # next(reader)
     for line in reader:
-        print(line)
+        list.append(line)
 
-
+print(list)
 quit()
 
 #
@@ -40,7 +40,7 @@ def csv_write (file, row, column, content):
     except:
         print(os.listdir(file))
     return csv_file
-
+#file_to_save = csv_file
 def csv_save(directory, file_name, file_to_save):
     save = os.path.join(directory, file_name)
     file = open(save, 'w')
