@@ -28,7 +28,7 @@ def csv_save(original_file, directory, file_name, file_to_save):
     with open(original_file, "w") as f:
         writer = csv.writer(f)
     for line in file_to_save:
-        csv_writer.writerow(line)
+        writer.writerow(line)
     save = os.path.join(directory, file_name)
     f.close()
 
