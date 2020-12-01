@@ -12,6 +12,9 @@ def api_weather(api_key, forecast_date):
     "apikey":api_key}
     return querystring
 
+
+
+
 querystring = api_weather("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
 
 
@@ -19,7 +22,3 @@ response = requests.request("GET", url, params=querystring)
 
 
 print(response.json())
-
-
-#PFtJhTkCKd9Xaua1zq70f8eeCjm6Bq0c
-#"now"
