@@ -12,15 +12,19 @@ def api_weather(api_key, forecast_date):
     "apikey":api_key}
     return querystring
 
-
-
-
 querystring = api_weather("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
-
 
 response = requests.request("GET", url, params=querystring)
 
-list = []
+api_response_list = []
 for line in response.json():
-    list.append(line)
-print(list[0])
+    api_response_list.append(line)
+return_list = api_response_list[0]
+rain_list = return_list['precipitation_probability']
+rain = rain_list['value']
+if rain == 0:
+    print("Nie będzie padać")
+elif rain <= 50:
+    print("Nie wiem")
+else:
+    print("Będzie padać")
