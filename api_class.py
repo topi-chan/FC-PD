@@ -7,7 +7,7 @@ d = {}
 class WeatherForecast(self, api_key):
 
     def __init__(self, api_key):
-        #tutaj chyba tego nie musi być - może global?
+        #tutaj chyba querystring i d nie musi być - może global?
         self.api_key = api_key
         self.querystring = {}
         self.d = {}
