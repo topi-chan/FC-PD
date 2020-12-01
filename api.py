@@ -12,7 +12,12 @@ def api_weather(api_key, forecast_date):
     "apikey":api_key}
     return querystring
 
-querystring = api_weather("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
+try:
+    answer = "{}".format(sys.argv[2])
+except:
+    answer = "{}".format("2020-12-02")
+
+querystring = api_weather("{}".format(sys.argv[1]), answer)
 
 response = requests.request("GET", url, params=querystring)
 
