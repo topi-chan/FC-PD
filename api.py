@@ -20,5 +20,7 @@ querystring = api_weather("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
 
 response = requests.request("GET", url, params=querystring)
 
-
-print(response.json())
+list = []
+for line in response.json():
+    list.append(line)
+print(list[0])
