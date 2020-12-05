@@ -30,7 +30,6 @@ class WeatherForecast():
         else:
             print("Będzie padać")
         self.forecast_dict[forecast_date] = rain
-        print(self.forecast_dict)
 
     def csv_save(self, file_name):
         with open(file_name, "a+", newline="") as file:
@@ -41,7 +40,7 @@ class WeatherForecast():
 
     def weather_listing(self, file):
         file = open(file, 'r')
-        line = file.readlines()
+        line = file.read().rstrip()
         print(line)
 
 wf = WeatherForecast()
