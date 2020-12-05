@@ -8,6 +8,7 @@ class WeatherForecast():
 
     def __init__(self):
         self.forecast_dict = {}
+        self.forecast_date = None
 
     def main(self, api_key, forecast_date):
         querystring = {"lat":"50","lon":"19","unit_system":"si",
@@ -17,6 +18,7 @@ class WeatherForecast():
         "apikey":api_key}
         response = requests.request("GET",
         "https://api.climacell.co/v3/weather/forecast/daily", params=querystring)
+        self.forecast_date = forecast_date
         api_response_list = []
         for line in response.json():
             api_response_list.append(line)
@@ -32,13 +34,17 @@ class WeatherForecast():
         self.forecast_dict[forecast_date] = rain
 
     def csv_save(self, file_name):
+        datafile = open(file_name)
+        for line in datafile:
+            if self.forecast_date in line:
+                return
         with open(file_name, "a+", newline="") as file:
             writer = csv.writer(file, delimiter=',', lineterminator="\r")
             writer.writerow(self.forecast_dict.keys())
             writer.writerow(self.forecast_dict.values())
         file.close()
 
-    def weather_listing(self, file):
+    def items(self, file):
         file = open(file, 'r')
         line = file.read().rstrip()
         print(line)
@@ -46,4 +52,4 @@ class WeatherForecast():
 wf = WeatherForecast()
 wf.main("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
 wf.csv_save("dates.csv")
-wf.weather_listing("dates.csv")
+wf.items("dates.csv")
