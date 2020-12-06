@@ -47,7 +47,7 @@ class FileReader:
             content = arg_number[2]
             original_list[X][Y] = content
         self.new_list = original_list
-        self.csv_save(self.arg2, self.arg1, self.new_list)
+        self.csv_save()
 
     def pickle_define(self, original_list, arg_number):
         for arg in arg_number:
@@ -60,12 +60,11 @@ class FileReader:
         print(new_list)
         return new_list
 
-    def csv_save(self, directory, file_name, file_to_save):
-        with open(os.path.join(directory, file_name), "w") as f:
+    def csv_save(self):
+        with open(os.path.join(self.arg2, self.arg1), "w") as f:
             writer = csv.writer(f)
-            for line in file_to_save:
+            for line in self.new_list:
                 writer.writerow(line)
-            f.close()
 
 # def json_save
 #
