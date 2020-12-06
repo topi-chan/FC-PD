@@ -27,11 +27,13 @@ class WeatherForecast():
         rain = rain_list['value']
         if rain == 0:
             print("Nie będzie padać")
+            self.forecast_dict[forecast_date] = "Nie będzie padać"
         elif rain <= 50:
             print("Nie wiem")
+            self.forecast_dict[forecast_date] = "Nie wiem"
         else:
             print("Będzie padać")
-        self.forecast_dict[forecast_date] = rain
+            self.forecast_dict[forecast_date] = "Będzie padać"
 
     def csv_save(self, file_name):
         datafile = open(file_name)
