@@ -19,6 +19,7 @@ class FileReader:
                 for line in reader:
                     self.list.append(line)
                 self.csv_define(self.list)
+                self.csv_save('')
         except:
             pass
         try:
@@ -26,17 +27,17 @@ class FileReader:
                 reader = json.load(json_file)
                 for line in reader:
                     self.list.append(line)
-                self.json_define()
+            self.csv_define(self.list)
+            self.csv_save('.csv')
         except:
             pass
         try:
             reader = pd.read_pickle(file)
             for line in reader:
                 self.list.append(line)
-            self.pickle_define()
+            self.csv_define(self.list)
+            self.csv_save('.csv')
         except:
-            # print(os.listdir(file))
-            # quit()
             pass
 
     def csv_define(self, original_list):
@@ -47,37 +48,18 @@ class FileReader:
             content = arg_number[2]
             original_list[X][Y] = content
         self.new_list = original_list
-        self.csv_save()
 
-    def pickle_define(self, original_list, arg_number):
-        for arg in arg_number:
-            arg = arg.split(",")
-            X = int(arg_number[0])
-            Y = int(arg_number[1])
-            content = arg_number[2]
-            original_list[X][Y] = content
-        new_list = original_list
-        print(new_list)
-        return new_list
-
-    def csv_save(self):
-        with open(os.path.join(self.arg2, self.arg1), "w") as f:
+    def csv_save(self, format):
+        with open(os.path.join(self.arg2, self.arg1+format), "w") as f:
             writer = csv.writer(f)
             for line in self.new_list:
                 writer.writerow(line)
+        print(self.new_list)
 
-# def json_save
-#
-# def pickle_save
-fr = FileReader(sys.argv[1], sys.argv[2], sys.argv[3:])
+if os.path.isfile(sys.argv[1]):
+    fr = FileReader(sys.argv[1], sys.argv[2], sys.argv[3:])
+else:
+    print("Błąd", "\n", os.listdir())
+    quit()
 fr.file_read(sys.argv[1])
-quit()
-
-print(fr.list)
-
-new_list = csv_define(list, sys.argv[3:])
-print(new_list)
-
-csv_save(sys.argv[1], sys.argv[2], sys.argv[1], new_list)
-
 quit()
