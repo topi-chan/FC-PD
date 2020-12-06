@@ -5,9 +5,12 @@ import pandas as pd
 class FileReader:
     """Allows you to open and rewrite csv/json/pickle files"""
 
-    def __init__(self):
+    def __init__(self, arg1, arg2, arg3):
         self.list = []
         self.new_list = []
+        self.arg1 = arg1
+        self.arg2 = arg2
+        self.arg3 = []
 
     def file_read(self, file):
         try:
@@ -15,7 +18,7 @@ class FileReader:
                 reader = csv.reader(f)
                 for line in reader:
                     self.list.append(line)
-                self.csv_define(self.list, sys.argv[3:])
+                self.csv_define(self.list)
         except:
             pass
         try:
@@ -36,8 +39,8 @@ class FileReader:
             # quit()
             pass
 
-    def csv_define(self, original_list, arg_number):
-        for arg in arg_number:
+    def csv_define(self, original_list):
+        for arg in self.arg3:
             arg = arg.split(",")
             X = int(arg_number[0])
             Y = int(arg_number[1])
@@ -67,7 +70,7 @@ class FileReader:
 # def json_save
 #
 # def pickle_save
-fr = FileReader()
+fr = FileReader(sys.argv[1], sys.argv[2], sys.argv[3:])
 fr.file_read(sys.argv[1])
 quit()
 
