@@ -1,7 +1,7 @@
 import csv, os, sys, json, pickle
 import pandas as pd
 
-def csv_read(file):
+def file_read(file):
     list = []
     try:
         with open(file, "r") as f:
@@ -9,7 +9,7 @@ def csv_read(file):
     except:
         pass
     try:
-        with open(file, "r") as json_file:
+        with open(file) as json_file:
             reader = json.load(json_file)
     except:
         pass
@@ -41,10 +41,11 @@ def csv_save(original_file, directory, file_name, file_to_save):
         f.close()
 
 
-list = csv_read(sys.argv[1])
-
+list = file_read(sys.argv[1])
+print(list)
+quit()
 new_list = csv_define(list, sys.argv[3:])
 
-csv_save(sys.argv[1], sys.argv[2], 'addresses.csv', new_list)
+csv_save(sys.argv[1], sys.argv[2], sys.argv[1], new_list)
 
 quit()
