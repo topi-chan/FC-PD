@@ -1,14 +1,13 @@
-import requests
-import sys
-import json
-import csv
-
+import requests, sys, json, csv
 
 class WeatherForecast():
+    '''Allows you to forecast rain probability from API, write results into file'''
 
     def __init__(self):
         self.forecast_dict = {}
         self.forecast_date = None
+        self.forecast_file_dict = {}
+        self.list = []
 
     def main(self, api_key, forecast_date):
         querystring = {"lat":"50","lon":"19","unit_system":"si",
@@ -39,19 +38,31 @@ class WeatherForecast():
         datafile = open(file_name)
         for line in datafile:
             if self.forecast_date in line:
-                return
+                return self.dict_save(file_name)
         with open(file_name, "a+", newline="") as file:
             writer = csv.writer(file, delimiter=',', lineterminator="\r")
             writer.writerow(self.forecast_dict.keys())
             writer.writerow(self.forecast_dict.values())
-        file.close()
+        self.dict_save(file_name)
 
-    def items(self, file):
-        file = open(file, 'r')
-        line = file.read().rstrip()
-        print(line)
+    def dict_save(self, file_name):
+        with open(file_name) as f:
+            for line in f:
+                line = line.rstrip()
+                self.list.append(line)
+        it = iter(self.list)
+        self.forecast_file_dict = dict(zip(it, it))
+
+    def items(self):
+        for item in self.forecast_file_dict.items():
+            print(item)
+
+    def __getitem__(self, key):
+        return getattr(self,key)
+
 
 wf = WeatherForecast()
 wf.main("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
 wf.csv_save("dates.csv")
-wf.items("dates.csv")
+wf.items()
+print(wf.forecast_file_dict["2020-12-16"])
