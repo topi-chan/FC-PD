@@ -55,14 +55,15 @@ class WeatherForecast():
 
     def items(self):
         for item in self.forecast_file_dict.items():
-            print(item)
+            yield item
 
     def __getitem__(self, key):
-        return getattr(self,key)
+        return self.forecast_file_dict[key]
 
 
 wf = WeatherForecast()
 wf.main("{}".format(sys.argv[1]), "{}".format(sys.argv[2]))
 wf.csv_save("dates.csv")
-wf.items()
-print(wf.forecast_file_dict["2020-12-16"])
+for item in wf.items():
+    print(item)
+print(wf["2020-12-16"])
