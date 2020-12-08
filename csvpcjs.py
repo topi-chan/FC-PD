@@ -2,46 +2,51 @@ import csv, os, sys, json, pickle
 import pandas as pd
 
 
-class FileReader:
-    """Allows you to open csv/json/pickle files, appends its content into list"""
+class PathReader:
+    '''Allows you to open csv/json/pickle files, appends its content into list'''
 
-    def __init__(self, arg1, arg2, arg3):
-        self.list = []
-        self.arg1 = arg1
-        self.arg2 = arg2
-        self.arg3 = arg3
+    def __init__(self, file):
+        self.list = file
+        self.new_list
+        self.original_list
+
+
+    def detect(filepath):
+        path = os.path.splitext(filepath)
+        extension = path[-1]
+        if  extension == "csv":
+
+#        zwracam obie klasy przez return CsvSave(filepath)
+
+    def file_read(self, file, ):
+
+
+#    zwracam klase csv_save
 
     def file_read(self, file):
         filepath = ".".split(file)
-        if filepath[1] == "csv":
+        if filepath[-1] == "csv":
             with open(file, "r") as f:
                 reader = csv.reader(f)
                 for line in reader:
                     self.list.append(line)
                 self.csv_define(self.list)
                 self.csv_save('')
-        elif filepath[1] == "json":
+        elif filepath[-1] == "json":
             with open(file) as json_file:
                 reader = json.load(json_file)
                 for line in reader:
                     self.list.append(line)
             self.csv_define(self.list)
             self.csv_save('.csv')
-        elif filepath[1] == "json":
+        elif filepath[-1] == "pickle":
             reader = pd.read_pickle(file)
             for line in reader:
                 self.list.append(line)
             self.csv_define(self.list)
             self.csv_save('.csv')
 
-class CsvSave:
-    """Rewrites and saves a CSV file returned from 'FileReader' Class"""
-
-    def __init__(self):
-        self.list = []
-        self.new_list = []
-
-    def csv_define(self, original_list):
+    def define(self, original_list):
         for arg in self.arg3:
             arg = arg.split(",")
             X = int(arg_number[0])
@@ -50,29 +55,73 @@ class CsvSave:
             original_list[X][Y] = content
         self.new_list = original_list
 
-    def csv_save(self, format):
+
+class CsvReader(PathReader):
+'''It reads csv file and appends its content into 'FileReader''''
+
+    def csv_read():
+        with open(file, "r") as f:
+            reader = csv.reader(f)
+            for line in reader:
+                self.list.append(line)
+            self.csv_define(self.list)
+            self.csv_save('')
+
+        zwracam obie klasy przez return CsvSave(filepath)
+
+class FileSave:
+    '''It detects to which file format you want to save file as'''
+
+    def __init__(self, filepath, file_readlist):
+        self.file_list = file_list
+        self.new_list = []
+# z CsvReader list
+        self.filepath = filepath
+
+    def detect(filepath):
+    if filepath[-1] == "csv":
+        zwracam obie klasy przez return CsvSave(filepath)
+    zwracam klase csv_save
+
+
+    #
+    # def csv_save(self, format):
+    #     with open(os.path.join(self.arg2, self.arg1+format), "w") as f:
+    #         writer = csv.writer(f)
+    #         for line in self.new_list:
+    #             writer.writerow(line)
+    #     print(self.new_list)
+    #
+    #     sprawdzac czy istnieje plik
+
+class CsvSave(FileSave):
+    '''Rewrites and saves a CSV file returned from 'FileReader' Class'''
+
+
+    def save(self):
         with open(os.path.join(self.arg2, self.arg1+format), "w") as f:
             writer = csv.writer(f)
             for line in self.new_list:
                 writer.writerow(line)
+#                self.csv_save()
         print(self.new_list)
 
 class PickleSave:
-    """Saves a pickle file returned from 'FileReader' Class and then rewrited
-    with 'csv_save' method within 'CsvSave' Class"""
+    '''Saves a pickle file returned from 'FileReader' Class and then rewrited
+    with 'csv_save' method within 'CsvSave' Class'''
 
 #    @csv_define
 
-    def pickle_save(self, format):
-        with open(os.path.join(self.arg2, self.arg1+format), "w") as f:
-            writer = csv.writer(f)
-            for line in self.new_list:
-                writer.writerow(line)
-        print(self.new_list)
+    def save(self, filepath):
+        with open(filepath, 'wb') as f:
+            pickle.dump(self.new_list, f)
 
 
 class JsonSave:
-    """Rewrites and saves a json file returned from 'FileReader' Class"""
+    '''Rewrites and saves a json file returned from 'FileReader' Class'''
+    json.dump
+#    @csv_define
+
 
 if os.path.isfile(sys.argv[1]):
     fr = FileReader(sys.argv[1], sys.argv[2], sys.argv[3:])
@@ -81,3 +130,6 @@ else:
     quit()
 fr.file_read(sys.argv[1])
 quit()
+reader = PathReader(filepath)
+save = FileSave.detect(filepath2,reader.list)
+save.save()
