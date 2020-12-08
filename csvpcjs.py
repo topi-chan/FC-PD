@@ -71,6 +71,9 @@ class PickleSave:
         print(self.new_list)
 
 
+class JsonSave:
+    """Rewrites and saves a json file returned from 'FileReader' Class"""
+
 if os.path.isfile(sys.argv[1]):
     fr = FileReader(sys.argv[1], sys.argv[2], sys.argv[3:])
 else:
