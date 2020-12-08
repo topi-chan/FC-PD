@@ -14,28 +14,27 @@ def csv_read(file):
         quit()
     return list
 
-def csv_define(original_list, arg_number):
-    for arg in arg_number:
+def csv_define(original_list):
+    for arg in sys.argv[3:]:
         arg = arg.split(",")
-        X = int(arg_number[0])
-        Y = int(arg_number[1])
-        content = arg_number[2]
+        X = int(arg[0])
+        Y = int(arg[1])
+        content = arg[2]
         original_list[X][Y] = content
     new_list = original_list
-    print(new_list)
     return new_list
 
 def csv_save(original_file, directory, file_name, file_to_save):
-    with open(os.path.join(directory, file_name), "w") as f:
+    with open(original_file, "w") as f:
         writer = csv.writer(f)
-        for line in file_to_save:
-            writer.writerow(line)
-        f.close()
-
+    for line in file_to_save:
+        writer.writerow(line)
+    save = os.path.join(directory, file_name)
+    f.close()
 
 list = csv_read(sys.argv[1])
 
-new_list = csv_define(list, sys.argv[3:])
+new_list = csv_define(list)
 
 csv_save(sys.argv[1], sys.argv[2], 'addresses.csv', new_list)
 
