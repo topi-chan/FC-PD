@@ -3,8 +3,9 @@ import pandas as pd
 
 
 class FileReader:
-    '''Allows you to open a csv/json/pickle (or any other) files, then appends its
-    content into a list with use of designed Class (name: 'File_formatReader')'''
+    '''Allows you to open a csv/json/pickle (or any other) files, then appends
+    its content into a list with use of designed Class (name: 'File_formatReader')
+    Pandas library is needed for PickleReader'''
 
     def __init__(self, filepath):
         self.filepath = filepath
@@ -13,6 +14,7 @@ class FileReader:
 
 #czy 'self' poniżej jest potrzebny?
     def detect(self, filepath):
+        '''add another 'elif' if you want to add another file format'''
         path = os.path.splitext(filepath)
         extension = path[-1]
         if  extension == ".csv":
@@ -23,7 +25,6 @@ class FileReader:
             return PickleReader(filepath)
         else:
             print("Błąd - nie rozpoznano typu pliku")
-#    zwracam klase csv_save
 
     def file_read(self, file):
         filepath = ".".split(file)
@@ -59,17 +60,37 @@ class FileReader:
 
 
 class CsvReader(PathReader):
-'''It reads csv file and appends its content into 'FileReader''''
+    '''Reads csv file and appends its content into a list within 'FileReader' Class'''
 
-    def csv_read(filepath):
+    def read(filepath):
         with open(filepath, "r") as f:
             reader = csv.reader(f)
             for line in reader:
                 self.list.append(line)
-            self.csv_define(self.list)
+            self.define(self.list)
 #            self.csv_save('')
 
         zwracam obie klasy przez return CsvSave(filepath)
+
+class JsonReader(PathReader):
+    '''Reads json file and appends its content into a list within 'FileReader' Class'''
+
+    def read(filepath):
+        with open(filepath) as json_file:
+            reader = json.load(json_file)
+            for line in reader:
+                self.list.append(line)
+            self.define(self.list)
+
+class PickleReader(PathReader):
+    '''Reads pickle file and appends its content into a list within 'FileReader' Class'''
+
+    def read(filepath):
+        reader = pd.read_pickle(filepath)
+        for line in reader:
+            self.list.append(line)
+        self.define(self.list)
+
 
 class FileSave:
     '''It detects to which file format you want to save file as'''
