@@ -2,25 +2,27 @@ import csv, os, sys, json, pickle
 import pandas as pd
 
 
-class PathReader:
-    '''Allows you to open csv/json/pickle files, appends its content into list'''
+class FileReader:
+    '''Allows you to open a csv/json/pickle (or any other) files, then appends its
+    content into a list with use of designed Class (name: 'File_formatReader')'''
 
-    def __init__(self, file):
-        self.list = file
-        self.new_list
-        self.original_list
+    def __init__(self, filepath):
+        self.filepath = filepath
+        self.original_list = []
+        self.new_list = []
 
-
-    def detect(filepath):
+#czy 'self' poniżej jest potrzebny?
+    def detect(self, filepath):
         path = os.path.splitext(filepath)
         extension = path[-1]
-        if  extension == "csv":
-
-#        zwracam obie klasy przez return CsvSave(filepath)
-
-    def file_read(self, file, ):
-
-
+        if  extension == ".csv":
+            return CsvReader(filepath)
+        elif  extension == ".json":
+            return JsonReader(filepath)
+        elif extension == ".pickle":
+            return PickleReader(filepath)
+        else:
+            print("Błąd - nie rozpoznano typu pliku")
 #    zwracam klase csv_save
 
     def file_read(self, file):
@@ -59,13 +61,13 @@ class PathReader:
 class CsvReader(PathReader):
 '''It reads csv file and appends its content into 'FileReader''''
 
-    def csv_read():
-        with open(file, "r") as f:
+    def csv_read(filepath):
+        with open(filepath, "r") as f:
             reader = csv.reader(f)
             for line in reader:
                 self.list.append(line)
             self.csv_define(self.list)
-            self.csv_save('')
+#            self.csv_save('')
 
         zwracam obie klasy przez return CsvSave(filepath)
 
