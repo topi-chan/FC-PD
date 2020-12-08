@@ -100,7 +100,7 @@ class CsvSave(FileSave):
         filename = os.path.basename(filepath)
         with open(os.path.join(pathname, filename), "w") as f:
             writer = csv.writer(f)
-            for line in self.new_list:
+            for line in self.file_read_list:
                 writer.writerow(line)
 
 
@@ -109,13 +109,15 @@ class PickleSave(FileSave):
 
     def save(filepath):
         with open(filepath, 'wb') as f:
-            pickle.dump(self.new_list, f)
+            pickle.dump(self.file_read_list, f)
 
 
 class JsonSave(FileSave):
     '''Rewrites and saves a json file received from 'FileReader' Class'''
-    json.dump
-#    @csv_define
+
+    def save(filepath):
+        with open(filepath, 'w') as f:
+            json.dump(self.file_read_list, f)
 
 
 if os.path.isfile(sys.argv[1]):
@@ -124,53 +126,6 @@ else:
     print("Błąd", "\n", os.listdir())
     quit()
 fr.detect()
-reader = FileReader(filepath)
-save = FileSave.detect(filepath2,reader.new_list)
-save.save()
+save = FileSave(sys.argv[2],fr.new_list)
+save.detect()
 quit()
-
-
-
-
-
-#            self.csv_save('')
-
-
-    # if filepath[-1] == "csv":
-    #     zwracam obie klasy przez return CsvSave(filepath)
-    # zwracam klase csv_save
-
-    #
-    # def csv_save(self, format):
-    #     with open(os.path.join(self.arg2, self.arg1+format), "w") as f:
-    #         writer = csv.writer(f)
-    #         for line in self.new_list:
-    #             writer.writerow(line)
-    #     print(self.new_list)
-    #
-    #     sprawdzac czy istnieje plik
-
-
-    #
-    # def file_read(self, file):
-    #     filepath = ".".split(file)
-    #     if filepath[-1] == "csv":
-    #         with open(file, "r") as f:
-    #             reader = csv.reader(f)
-    #             for line in reader:
-    #                 self.list.append(line)
-    #             self.csv_define(self.list)
-    #             self.csv_save('')
-    #     elif filepath[-1] == "json":
-    #         with open(file) as json_file:
-    #             reader = json.load(json_file)
-    #             for line in reader:
-    #                 self.list.append(line)
-    #         self.csv_define(self.list)
-    #         self.csv_save('.csv')
-    #     elif filepath[-1] == "pickle":
-    #         reader = pd.read_pickle(file)
-    #         for line in reader:
-    #             self.list.append(line)
-    #         self.csv_define(self.list)
-    #         self.csv_save('.csv')
