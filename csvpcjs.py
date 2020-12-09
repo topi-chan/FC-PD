@@ -22,7 +22,7 @@ class FileReader:
         path = os.path.splitext(self.filepath)
         extension = path[-1]
         if  extension == ".csv":
-            return CsvReader(self.filepath)
+            return CsvReader(self.filepath, self.change_list)
         elif  extension == ".json":
             return JsonReader(self.filepath)
         elif extension == ".pickle":
@@ -77,16 +77,17 @@ class FileSave():
         self.filepath = filepath
         self.file_read_list = file_read_list
 
-    def detect(self, filepath):
+#czy tutaj by się przydał dekorator?
+    def detect(self):
         '''add another 'elif' if you want to add another file format'''
-        path = os.path.splitext(filepath)
+        path = os.path.splitext(self.filepath)
         extension = path[-1]
         if  extension == ".csv":
-            return CsvSave(filepath)
+            return CsvSave(self.filepath, self.file_read_list)
         elif  extension == ".json":
-            return JsonSave(filepath)
+            return JsonSave(self.filepath)
         elif extension == ".pickle":
-            return PickleSave(filepath)
+            return PickleSave(self.filepath)
         else:
             print("Błąd - nie rozpoznano typu pliku")
 
