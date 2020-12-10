@@ -109,16 +109,16 @@ class CsvSave(FileSave):
 class PickleSave(FileSave):
     '''Saves a pickle file content, received from 'FileReader' Class'''
 
-    def save(self, filepath):
-        with open(filepath, 'wb') as f:
+    def save(self):
+        with open(self.filepath, 'wb') as f:
             pickle.dump(self.file_read_list, f)
 
 
 class JsonSave(FileSave):
     '''Saves a json file received from 'FileReader' Class'''
 
-    def save(self, filepath):
-        with open(filepath, 'w') as f:
+    def save(self):
+        with open(self.filepath, 'w') as f:
             json.dump(self.file_read_list, f)
 
 
