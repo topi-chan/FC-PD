@@ -24,30 +24,30 @@ class FileReader:
         if  extension == ".csv":
             return CsvReader(self.filepath, self.change_list)
         elif  extension == ".json":
-            return JsonReader(self.filepath)
+            return JsonReader(self.filepath, self.change_list)
         elif extension == ".pickle":
-            return PickleReader(self.filepath)
+            return PickleReader(self.filepath, self.change_list)
         else:
             print("Błąd - nie rozpoznano typu pliku")
 
     def define(self):
         for arg in self.change_list:
             arg = arg.split(",")
-            X = int(arg_number[0])
-            Y = int(arg_number[1])
-            content = arg_number[2]
+            X = int(arg[0])
+            Y = int(arg[1])
+            content = arg[2]
             self.original_list[X][Y] = content
         self.new_list = self.original_list
 
 class CsvReader(FileReader):
     '''Reads csv file and passes its content into a list within 'FileReader' Class'''
 
-    def read(filepath):
-        with open(filepath, "r") as f:
+    def read(self):
+        with open(self.filepath, "r") as f:
             reader = csv.reader(f)
             for line in reader:
                 self.original_list.append(line)
-            self.define(self.original_list)
+            self.define()
 
 class JsonReader(FileReader):
     '''Reads json file and passes its content into a list within 'FileReader' Class'''
@@ -85,9 +85,9 @@ class FileSave():
         if  extension == ".csv":
             return CsvSave(self.filepath, self.file_read_list)
         elif  extension == ".json":
-            return JsonSave(self.filepath)
+            return JsonSave(self.filepath, self.file_read_list)
         elif extension == ".pickle":
-            return PickleSave(self.filepath)
+            return PickleSave(self.filepath, self.file_read_list)
         else:
             print("Błąd - nie rozpoznano typu pliku")
 
@@ -96,10 +96,11 @@ class CsvSave(FileSave):
     '''Rewrites and saves a CSV file content, received from 'FileReader' Class'''
 
 #czy trzeba przy wywołaniu tej funkcji w FileSave wywoływać także metodę 'save'?
-    def save(filepath):
-        pathname = os.path.dirname(filepath)
-        filename = os.path.basename(filepath)
-        with open(os.path.join(pathname, filename), "w") as f:
+    def save(self):
+        print(self.file_read_list)
+        # pathname = os.path.dirname(self.filepath)
+        # filename = os.path.basename(self.filepath)
+        with open(self.filepath, "w") as f:
             writer = csv.writer(f)
             for line in self.file_read_list:
                 writer.writerow(line)
@@ -108,15 +109,15 @@ class CsvSave(FileSave):
 class PickleSave(FileSave):
     '''Saves a pickle file content, received from 'FileReader' Class'''
 
-    def save(filepath):
+    def save(self, filepath):
         with open(filepath, 'wb') as f:
             pickle.dump(self.file_read_list, f)
 
 
 class JsonSave(FileSave):
-    '''Rewrites and saves a json file received from 'FileReader' Class'''
+    '''Saves a json file received from 'FileReader' Class'''
 
-    def save(filepath):
+    def save(self, filepath):
         with open(filepath, 'w') as f:
             json.dump(self.file_read_list, f)
 
@@ -126,7 +127,10 @@ if os.path.isfile(sys.argv[1]):
 else:
     print("Błąd", "\n", os.listdir())
     quit()
-fr.detect()
-save = FileSave(sys.argv[2],fr.new_list)
-save.detect()
+fr2 = fr.detect()
+print(fr, fr2)
+fr2.read()
+#fr.detect().read()
+save = FileSave(sys.argv[2],fr2.new_list)
+save.detect().save()
 quit()
