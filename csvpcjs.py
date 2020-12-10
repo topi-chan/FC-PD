@@ -52,21 +52,21 @@ class CsvReader(FileReader):
 class JsonReader(FileReader):
     '''Reads json file and passes its content into a list within 'FileReader' Class'''
 
-    def read(filepath):
-        with open(filepath) as json_file:
+    def read(self):
+        with open(self.filepath) as json_file:
             reader = json.load(json_file)
             for line in reader:
                 self.original_list.append(line)
-            self.define(self.original_list)
+            self.define()
 
 class PickleReader(FileReader):
     '''Reads pickle file and passes its content into a list within 'FileReader' Class'''
 
-    def read(filepath):
-        reader = pd.read_pickle(filepath)
+    def read(self):
+        reader = pd.read_pickle(self.filepath)
         for line in reader:
             self.original_list.append(line)
-        self.define(self.original_list)
+        self.define()
 
 
 class FileSave():
