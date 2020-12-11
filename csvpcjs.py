@@ -16,7 +16,6 @@ class FileReader:
         self.original_list = []
         self.new_list = []
 
-#czy 'self' poniżej jest potrzebny? czy 'path' jest, skoro pobrany w __init__?
     def detect(filepath, change_list):
         '''add another 'elif' if you want to add another file format'''
         path = os.path.splitext(filepath)
@@ -77,7 +76,6 @@ class FileSave():
         self.filepath = filepath
         self.file_read_list = file_read_list
 
-#czy tutaj by się przydał dekorator?
     def detect(self):
         '''add another 'elif' if you want to add another file format'''
         path = os.path.splitext(self.filepath)
@@ -95,11 +93,8 @@ class FileSave():
 class CsvSave(FileSave):
     '''Rewrites and saves a CSV file content, received from 'FileReader' Class'''
 
-#czy trzeba przy wywołaniu tej funkcji w FileSave wywoływać także metodę 'save'?
     def save(self):
         print(self.file_read_list)
-        # pathname = os.path.dirname(self.filepath)
-        # filename = os.path.basename(self.filepath)
         with open(self.filepath, "w") as f:
             writer = csv.writer(f)
             for line in self.file_read_list:
@@ -123,12 +118,11 @@ class JsonSave(FileSave):
 
 
 if os.path.isfile(sys.argv[1]):
-    fr2 = FileReader.detect(sys.argv[1], sys.argv[3:])
+    fr = FileReader.detect(sys.argv[1], sys.argv[3:])
 else:
     print("Błąd", "\n", os.listdir())
     quit()
-fr2.read()
-#fr.detect().read()
+fr.read()
 save = FileSave(sys.argv[2],fr2.new_list)
 save.detect().save()
 quit()
