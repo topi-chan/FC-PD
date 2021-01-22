@@ -28,7 +28,7 @@ class WeatherForecast():
         api_response_list = []
         for line in response.json():
             api_response_list.append(line)
-        querystring = {"lat":"34","lon":"-118",
+        querystring = {"lat":lat,"lon":lon,
             "unit_system":"si",
         "start_time":forecast_date,
         "end_time":forecast_date,
@@ -39,7 +39,7 @@ class WeatherForecast():
         self.forecast_date = forecast_date
         for line in response.json():
             api_response_list.append(line)
-        querystring = {"lat":"34","lon":"-118",
+        querystring = {"lat":lat,"lon":lon,
             "unit_system":"si",
         "start_time":forecast_date,
         "end_time":forecast_date,
