@@ -35,7 +35,7 @@ if (k >= 1 and k<= 1000000) is False:
     quit()
 #for x in range (k)
 while True:
-    log = input("Please enter unsername (empty line to quit): ")
+    log = input("Please enter username (empty line to quit): ")
     if log == "": quit()
     lookup = session.query(Users).filter(Users.user_name == log).one_or_none()
     if lookup is None:
@@ -43,14 +43,13 @@ while True:
         session.add(user)
         print("OK")
     else:
-        try:
-            lookup = session.query(Users).filter(Users.user_name == log+(log[len(log.rstrip('0123456789')):]))
-            print(lookup)
-            userd = int(lookup.user_name[-1])
-            usern = str(log+"{}").format(str(userd+1))
-        except:
-            user = Users(user_name=log+"1")
-            session.add(user)
-            print(log+"1")
+        lookup = session.query(Users.contains(log))
+        print(lookup)
+        userd = int(lookup.user_name[-1])
+        usern = str(log+"{}").format(str(userd+1))
+        # except:
+        #     user = Users(user_name=log+"1")
+        #     session.add(user)
+        #     print(log+"1")
     session.commit()
 #    q = session.query(Users.user_name).filter(Users.user_name==log)
