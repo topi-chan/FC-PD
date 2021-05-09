@@ -1,2 +1,3 @@
 # FC-PD
-na potrzeby kursy Python Developer Future Collars
+It was a very cool bootcamp.
+https://futurecollars.com/pl/python-developer-kurs-online/
